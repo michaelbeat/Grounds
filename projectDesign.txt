@@ -1,0 +1,37 @@
+------------------------------------------------------------------------------------------------------------------
+This file is here to help Team 3 keep a simple, unified design and continuity throughout project one, Recycle oil.
+------------------------------------------------------------------------------------------------------------------
+TABS OR SPACES?
+	We will be using tabs throughout this project, for all files regardless of it's purpoase
+
+-CAMEL CASE OR SNAKE CASE?
+	In this project, the html files will be using dash case. 
+		eg. descript-input
+	In this project, all js files will be using camel case.
+		eg. descriptVariable
+	In this project, all css files will be using camel case.
+
+-COMMENTS
+	In all js files, all functions will have a description above their definition, detailing their purpose and a basic synopsis of their operation.
+		eg.
+			/*
+			This function is in control of setting the buttons for our main div to editable depending on the args.
+			The first arg is a boolean that sets the visibility of the buttons to the arg passed.
+			*/
+	Comments in js will also be needed for plugs (See PLUGS)
+
+-JQUERY
+	In this project, we will be using JQuery for all interaction with the webpage.
+	We will also use JQuery for its Ajax call functionality.
+
+-WHAT CAN I EDIT?
+	You may only edit the file for which you are supposed to be working on.
+	For instance, if you are working in js you cannot change index.html to make it so that it is easier for you during testing. 
+	Instead, create a test page for you to test your feature or bug test in an inviroment that is not going to be deployed.
+
+-PLUGS
+	Plugs are the end pieces in both html and js that are going to interact with eachother.
+	A plug in html might be an input element with a unique id, whereas a plug in js might be an array or variable that gets used by another developer in another file.
+	What set's plugs apart from other variables and elements is that they are meant to interact with other files.
+	This is where the name plug comes from, as they plug into or offer a plug to other files.
+	Plugs should have their own descriptive comment above where they are defined in js, that way it is clear what is interacting with what.
