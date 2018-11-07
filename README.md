@@ -1,9 +1,8 @@
-# Project_1
+# Team #3 - Project 1
 First group project.
 
 
-####### Team Members #######
-
+## Team Members
 Brian Duong
 Issac Hormel
 Clayton Bondy
@@ -11,5 +10,6 @@ Christopher Quionnes
 Michael Beat
 
 
-####### Project Theme #######
+### Project Theme
 
+Recycle waste oil app
