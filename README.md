@@ -2,7 +2,7 @@
 
 ## Team Members
 Brian Duong - Project Manager/Frontend  
-Issac Hormel - Backend  
+Isaac Hormel - Backend  
 Clayton Bondy - Frontend  
 Christopher Quionnes - Backend  
 Michael Beat - GitHub Manager/Backend  
