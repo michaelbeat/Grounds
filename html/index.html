@@ -8,15 +8,16 @@
   <!-- Styling -->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="../css/reset.css">
-  <link rel="stylesheet" type="text/css" href="../css/style.css">
   <!-- Materialize CDN -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <!-- Custom Styling -->
+  <link rel="stylesheet" type="text/css" href="../css/style.css">
 
 </head>
 <body>
   <nav>
     <div class="nav-wrapper">
-      <a href="#!" class="brand-logo">Coffree</a>
+      <a href="#!" class="brand-logo">Home</a>
       <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
       <ul class="right hide-on-med-and-down">
         <li><a href="sass.html">Sass</a></li>
@@ -33,7 +34,21 @@
       <li><a href="collapsible.html">Javascript</a></li>
       <li><a href="mobile.html">Mobile</a></li>
     </ul>
-  </body>
+
+  <div class="container" id="home-content">
+      <div class="row">
+        <div id="logo-image">
+          <img src="../images/ground-logo.png" alt="Coffree Logo">
+        </div>
+      </div>
+      <div class="row text-info">
+        <p>The Ground app connects users in the Austin area with local coffee shops looking to dispose of their used grounds in a responsible way. Our users are compost centers, farmers, and gardeners looking for an eco-friendly (and free) substitute for harmful fertilizers. </p>
+      </div>
+      <div class="row">
+        <a id="user-button" class="waves-effect waves-light btn-large">User</a>
+        <a id="business-button" class="waves-effect waves-light btn-large">Business</a>
+      </div>
+    </div>
 
   <!-- jQuery -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -42,13 +57,11 @@
   <!-- Firebase Reference -->
   <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
 
-</head>
-<body>
-  Clayton Bondy
   <script type="text/javascript">
   $(document).ready(function(){
     $('.sidenav').sidenav();
   });
   </script>
+
   </body>
 </html>
