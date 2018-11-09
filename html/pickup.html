@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Project 1</title>
+  <!-- Styling -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="../css/reset.css">
+  <!-- Materialize CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <!-- Custom Styling -->
+  <link rel="stylesheet" type="text/css" href="../css/style.css">
+
+</head>
+<body>
+    <nav>
+      <div class="container">
+        <div class="nav-wrapper">
+          <a href="" class="brand-logo">Pick-up</a>
+          <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+          <a href="#" data-target="mobile-demo-right" class="sidenav-trigger"><i class="material-icons">adb</i></a>
+          <ul class="right hide-on-med-and-down">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="donate.html">Donate</a></li>
+            <li><a href="pickup.html">Pick-up</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+      <ul class="sidenav" id="mobile-demo">
+        <div class="sidenav-header">
+          <h3>
+            Pick-up
+          </h3>
+        </div>
+        <li><a href="index.html"><i class="material-icons">home</i>Home</a></li>
+        <li><a href="donate.html"><i class="material-icons">place</i>Donate</a></li>
+        <li><a href="pickup.html"><i class="material-icons">directions_car</i>Pick-up</a></li>
+        <li><div class="divider"></div></li>
+        <li><a href="collapsible.html">Settings</a></li>
+      </ul>
+
+      <ul class="sidenav" id="mobile-demo-right">
+        <img src="https://www.utexas.edu/sites/default/files/styles/utexas_hero_photo_image/public/tower_hero_v2.jpg" alt="notwork">
+        <div class="row">
+          <div class="col s12 m6">
+            <div class="card darken-1">
+              <div class="card-content">
+                <span class="card-title">Kickbutt Coffee</span>
+                <p style="color:grey">Hours of Operation: 7:00am-5:00pm</p>
+                <p>Address: 5755 Airport Blvd, Austin, TX 78752</p>
+                <p>Description: We've got 4 barrels full of coffee grounds that need to be picked up before Saturday!</p>
+              </div>
+              <div class="card-action">
+                <a class="waves-effect waves-light btn" id="claim-button">Claim!</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </ul>
+
+
+  </body>
+
+  <!-- jQuery -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <!-- Materialize JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <!-- Firebase Reference -->
+  <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
+  <script type="text/javascript">
+  $(document).ready(function(){
+    $('.sidenav').sidenav();
+    $('#mobile-demo-right').sidenav({
+      edge: "right"
+    })
+  });
+  </script>
+</html>

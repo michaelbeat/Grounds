@@ -1,6 +1,44 @@
 /* COlOR PALETTE (Light -> Dark) */
 /* E0FCDE 86FEB1 00BD70 00A097 3F220E */
+.sidenav .sidenav-header h3 {
+  margin: 0;
+  padding: 8px 0px;
+}
 
+.sidenav .sidenav-header {
+  text-align: center;
+  color: #fff;
+  background-color: #ee6e73;
+}
+
+#mobile-demo-right img {
+  width: 100%;
+}
+
+.business-container {
+  padding: .5rem;
+}
+
+.business-container h5 {
+  margin: 0 0 .2rem 0;
+}
+
+.business-container #hours {
+  color: gray;
+  margin-bottom: .2rem;
+}
+
+.business-container #address {
+  color: black;
+}
+
+.business-container #claim-button {
+  width: 100%;
+}
+
+.card-action #claim-button {
+  width: 100%;
+}
 
 /* General Styles */
 #home-content {
@@ -14,9 +52,10 @@ nav .brand-logo {
     overflow: hidden;
 }
 
-.nav-wrapper {
+nav {
     background-color: #3F220E;
 }
+
 body {
     background: linear-gradient(#E0FCDE, #00A097);
     background-repeat: no-repeat;
