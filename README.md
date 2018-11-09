@@ -1,14 +1,12 @@
-# Recycle Oil Web App
-
 ## Team Members
 Brian Duong - Project Manager/Frontend  
-Issac Hormel - Backend  
+Isaac Hormel - Backend  
 Clayton Bondy - Frontend  
 Christopher Quionnes - Backend  
 Michael Beat - GitHub Manager/Backend  
 
 ## Project Description
-Our goal for this application is to provide a platform that connects local businesses & restaurants looking to get rid of their waste oil and people looking to recycle that waste oil.
+Our goal for this application is to provide a platform that connects local businesses & restaurants looking to get rid of their coffee grounds and people looking to recycle and fertalize those grounds.
 
 ## APIs
 * Google Maps
