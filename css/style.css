@@ -1,9 +1,17 @@
 /* COlOR PALETTE (Light -> Dark) */
 /* E0FCDE 86FEB1 00BD70 00A097 3F220E */
 
+
+/* General Styles */
 #home-content {
     text-align: center;
     margin: auto;
+}
+
+nav .brand-logo {
+    font-size: 26px;
+    white-space: nowrap;
+    overflow: hidden;
 }
 
 .nav-wrapper {
@@ -33,4 +41,15 @@ img {
 
 .btn-large {
     background-color: #00BD70;
+    margin: 5px;
+}
+
+/* Status Page */
+
+#status-buttons {
+    text-align: center;
+}
+
+#cancel-button {
+    background-color: red;
 }

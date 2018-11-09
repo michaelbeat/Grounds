@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Project 1</title>
+  <!-- Styling -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="../css/reset.css">
+  <!-- Materialize CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <!-- Custom Styling -->
+  <link rel="stylesheet" type="text/css" href="../css/style.css">
+
+</head>
+<body>
+  <nav>
+    <div class="nav-wrapper">
+      <a href="#!" class="brand-logo">Pickup Status</a>
+      <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+      <ul class="right hide-on-med-and-down">
+        <li><a href="sass.html">Sass</a></li>
+        <li><a href="badges.html">Components</a></li>
+        <li><a href="collapsible.html">Javascript</a></li>
+        <li><a href="mobile.html">Mobile</a></li>
+      </ul>
+    </div>
+  </nav>
+
+    <ul class="sidenav" id="mobile-demo">
+      <li><a href="sass.html">Sass</a></li>
+      <li><a href="badges.html">Components</a></li>
+      <li><a href="collapsible.html">Javascript</a></li>
+      <li><a href="mobile.html">Mobile</a></li>
+    </ul>
+
+  <!-- div containing main body content -->
+  <div class="container"></div>
+    <div class="row">
+        <div class="col s12 m6">
+          <div class="card">
+            <div class="card-content">
+              <span class="card-title">Con-ground-tulations!</span>
+              <p>You have successfully claimed used coffee grounds from BUSINESS NAME. Be sure to pick them up within the allotted time, or you will lose your claim.</p>
+            </div>
+            <div class="card-action">
+                <p>Time remaining on claim: <span id="time-remaining">20:00</span></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  <div class="row" id="status-buttons">
+    <a id="cancel-button" class="waves-effect waves-light btn-large">Cancel Claim</a>
+    <a id="complete-button" class="waves-effect waves-light btn-large">Pickup Complete</a>
+  </div>
+
+  <!-- jQuery -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <!-- Materialize JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <!-- Firebase Reference -->
+  <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
+
+  <script type="text/javascript">
+  $(document).ready(function(){
+    $('.sidenav').sidenav();
+  });
+
+  var intervalId;
+  var clockRunning = false;
+
+  // stopwatch object which contains the clock functions
+  var stopwatch = {
+
+    time: 1200,
+
+    //function that starts the countdown clock
+    start: function() {
+      intervalId = setInterval(stopwatch.count, 1000);
+    },
+
+    //function that stops the countdown clock and ends the game
+    stop: function() {
+      clearInterval(intervalId);
+      $("#time-remaining").html("00:00");
+    },
+
+    //function initialized in the start function, counts down in intervals of 1000 ms
+    count: function() {
+      if (stopwatch.time > 0) { 
+        stopwatch.time--;
+        var converted = stopwatch.timeConverter(stopwatch.time);
+        $("#time-remaining").text(converted);
+      }
+      else {
+        stopwatch.stop();
+      }
+    },
+
+    //function that converts the time to display it in minutes and seconds
+    timeConverter: function(t) {
+        var minutes = Math.floor(t / 60);
+        var seconds = t - (minutes * 60);
+        if (seconds < 10) {seconds = "0" + seconds;}
+        if (minutes === 0) {minutes = "00";}
+        else if (minutes < 10) {minutes = "0" + minutes;}
+        return minutes + ":" + seconds;}
+    };     
+  
+  stopwatch.start();
+
+  </script>
+
+  </body>
+</html>
