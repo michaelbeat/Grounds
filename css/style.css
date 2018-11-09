@@ -1,0 +1,33 @@
+#home-content {
+    text-align: center;
+    margin: auto;
+}
+
+.nav-wrapper {
+    background-color: #3F220E;
+}
+body {
+    background: linear-gradient(#E0FCDE, #00A097);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+img {
+    margin-bottom: 0px;
+    max-width: 100%;
+    width: 70%;
+    height: auto;
+    padding: 20px 0px 0px 0px;
+}
+
+.text-info {
+    color: white;
+    font-size: 18px;
+    padding-right: 10px;
+    padding-left: 10px;
+}
+
+.btn-large {
+    background-color: #00BD70;
+}
