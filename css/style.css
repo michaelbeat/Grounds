@@ -33,3 +33,7 @@
 .business-container #claim-button {
   width: 100%;
 }
+
+.card-action #claim-button {
+  width: 100%;
+}
