@@ -1,5 +1,3 @@
-# Recycle Coffee Grounds Web App
-
 ## Team Members
 Brian Duong - Project Manager/Frontend  
 Isaac Hormel - Backend  
