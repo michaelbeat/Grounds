@@ -40,9 +40,16 @@
   width: 100%;
 }
 
+/* General Styles */
 #home-content {
     text-align: center;
     margin: auto;
+}
+
+nav .brand-logo {
+    font-size: 26px;
+    white-space: nowrap;
+    overflow: hidden;
 }
 
 nav {
@@ -73,4 +80,15 @@ img {
 
 .btn-large {
     background-color: #00BD70;
+    margin: 5px;
+}
+
+/* Status Page */
+
+#status-buttons {
+    text-align: center;
+}
+
+#cancel-button {
+    background-color: red;
 }
