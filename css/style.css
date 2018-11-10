@@ -73,7 +73,8 @@ img {
 
 .text-info {
     color: white;
-    font-size: 18px;
+    line-height: 1.25;
+    font-size: 16px;
     padding-right: 10px;
     padding-left: 10px;
 }
@@ -84,6 +85,26 @@ img {
 }
 
 /* Status Page */
+
+#status-card {
+  line-height: 1.25;
+  font-size: 16px;
+  display: block;
+  margin: auto;
+  margin-top: 15px;
+  text-align: left;
+  background-color: #00A097;
+  color: #fff;
+}
+
+.time-style {
+  text-align: center;
+}
+
+#time-remaining {
+  line-height: 2;
+  font-size: 30px;
+}
 
 #status-buttons {
     text-align: center;
