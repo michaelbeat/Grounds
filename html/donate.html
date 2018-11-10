@@ -15,7 +15,8 @@
 
 </head>
 <body>
-    <nav>
+    <!-- Navbar -->
+  <nav>
       <div class="container">
         <div class="nav-wrapper">
           <a href="#!" class="brand-logo">Donate</a>
@@ -28,19 +29,31 @@
         </div>
       </div>
     </nav>
+    <!-- Sidenav menu -->
+    <ul class="sidenav" id="mobile-demo">
+      <div class="sidenav-header">
+        <h3>Ground</h3>
+      </div>
+      <li><a href="index.html"><i class="material-icons">home</i>Home</a></li>
+      <li><a href="donate.html"><i class="material-icons">place</i>Donate</a></li>
+      <li><a href="pickup.html"><i class="material-icons">directions_car</i>Pick-up</a></li>
+      <li><div class="divider"></div></li>
+      <!-- <li><a href="collapsible.html">Settings</a></li> -->
+    </ul>
 
-      <ul class="sidenav" id="mobile-demo">
-        <div class="sidenav-header">
-          <h3>
-            Donate
-          </h3>
+    <!-- Main content -->
+    <nav id="nav-search">
+        <div class="container nav-wrapper">
+          <form>
+            <div class="input-field">
+              <input id="search" type="search" required>
+              <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+              <i class="material-icons">close</i>
+            </div>
+          </form>
         </div>
-        <li><a href="index.html"><i class="material-icons">home</i>Home</a></li>
-        <li><a href="donate.html"><i class="material-icons">place</i>Donate</a></li>
-        <li><a href="pickup.html"><i class="material-icons">directions_car</i>Pick-up</a></li>
-        <li><div class="divider"></div></li>
-        <li><a href="collapsible.html">Settings</a></li>
-      </ul>
+      </nav>
+
 
   </body>
 
@@ -51,6 +64,7 @@
   <!-- Firebase Reference -->
   <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
   <script type="text/javascript">
+
   $(document).ready(function(){
     $('.sidenav').sidenav();
   });
