@@ -1,18 +1,79 @@
 /* COlOR PALETTE (Light -> Dark) */
 /* E0FCDE 86FEB1 00BD70 00A097 3F220E */
-.sidenav .sidenav-header h3 {
-  margin: 0;
-  padding: 8px 0px;
+
+/* General styles */
+#home-content {
+  text-align: center;
+  margin: auto;
 }
 
-.sidenav .sidenav-header {
+nav .brand-logo {
+  font-size: 26px;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+nav {
+  background-color: #3F220E;
+}
+
+body {
+  background: linear-gradient(#E0FCDE, #00A097);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+img {
+  margin-bottom: 0px;
+  max-width: 100%;
+  width: 70%;
+  height: auto;
+  padding: 20px 0px 0px 0px;
+}
+
+.text-info {
+  color: white;
+  line-height: 1.25;
+  font-size: 16px;
+  padding-right: 10px;
+  padding-left: 10px;
+}
+
+.btn, .btn-large, .btn-small {
+  background-color: #00BD70;
+  margin: 5px;
+}
+
+/* Sidenav styles */
+.sidenav .sidenav-header h3 {
+  font-size: 26px;
+  white-space: nowrap;
+  overflow: hidden;
+  margin: 0;
+  padding: 14px 0px;
+}
+
+.sidenav-header {
   text-align: center;
   color: #fff;
-  background-color: #ee6e73;
+  background-color: #3F220E;
+}
+
+.side-nav {
+  text-align: center;
 }
 
 #mobile-demo-right img {
   width: 100%;
+}
+
+#mobile-demo {
+  background: white;
+}
+
+.right-aligned {
+  background: white;
 }
 
 .business-container {
@@ -40,48 +101,8 @@
   width: 100%;
 }
 
-/* General Styles */
-#home-content {
-    text-align: center;
-    margin: auto;
-}
-
-nav .brand-logo {
-    font-size: 26px;
-    white-space: nowrap;
-    overflow: hidden;
-}
-
-nav {
-    background-color: #3F220E;
-}
-
-body {
-    background: linear-gradient(#E0FCDE, #00A097);
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-size: cover;
-}
-
-img {
-    margin-bottom: 0px;
-    max-width: 100%;
-    width: 70%;
-    height: auto;
-    padding: 20px 0px 0px 0px;
-}
-
-.text-info {
-    color: white;
-    line-height: 1.25;
-    font-size: 16px;
-    padding-right: 10px;
-    padding-left: 10px;
-}
-
-.btn-large {
-    background-color: #00BD70;
-    margin: 5px;
+.card {
+  margin: 15px 5px;
 }
 
 /* Status Page */
@@ -112,4 +133,30 @@ img {
 
 #cancel-button {
     background-color: red;
+}
+
+/* Pick-up Page */
+
+.text-info-light {
+  color: #3F220E;
+  line-height: 1.25;
+  font-size: 16px;
+  padding-right: 10px;
+  padding-left: 10px;
+}
+
+#img-style {
+  padding: 0;
+}
+
+/* Donate Page */
+
+#nav-search {
+  margin: 20px auto;
+  background-color: white;
+  color: #3F220E;
+}
+
+.label-icon {
+  color: #3F220E;
 }
