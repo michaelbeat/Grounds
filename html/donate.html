@@ -42,17 +42,30 @@
     </ul>
 
     <!-- Main content -->
-    <nav id="nav-search">
-        <div class="container nav-wrapper">
-          <form>
-            <div class="input-field">
-              <input id="search" type="search" required>
-              <label class="label-icon" for="search"><i class="material-icons">search</i></label>
-              <i class="material-icons">close</i>
-            </div>
-          </form>
-        </div>
-      </nav>
+    <div class="container">
+      <div class="row">
+        <p id="text-info-search">What is the name of your business?</p>
+      </div>
+      <div class="row">
+        <nav id="nav-search">
+          <div class="container nav-wrapper">
+            <form> 
+              <div class="input-field">
+                <input id="search-business" type="search" required>
+                <label class="label-icon" for="search-business">
+                  <i class="material-icons">search</i>
+                </label>
+                <i class="material-icons">close</i>
+              </div>
+            </form>
+          </div>
+        </nav>
+      </div>
+      <div id="text-info-search" class="row">
+        <p id="results">Results appear here...</p>
+      </div>
+
+    </div>
 
 
   </body>
@@ -68,5 +81,37 @@
   $(document).ready(function(){
     $('.sidenav').sidenav();
   });
+
+  var business = "Coffee";
+  
+  var myurl = "https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?location=austin&limit=3&term=" + business;
+        $.ajax({
+            url: myurl,
+            headers: {
+            'Authorization':'Bearer Uensef7YvWBDrkLIVTvHbF1RPf2IN989gIxMN9HEvEV8VyXjp4TZ_V8faI3tItTCrIheVIeD-XjS78gcmrmtJ9I0MvJ1kEjU6x1KzdaiUzynr8rMEwSVs9WUlrXlW3Yx',
+        },
+            method: 'GET',
+            dataType: 'json',
+            success: function(data){
+                var totalresults = data.total;
+                if (totalresults > 0){
+                    $.each(data.businesses, function(i, item) {
+                        var id = "text-results";
+                        var phone = item.display_phone;
+                        var name = item.name;
+                        var address = item.location.address1;
+                        var city = item.location.city;
+                        var state = item.location.state;
+                        var zipcode = item.location.zip_code;
+                        var businessInfo = ('<p id="' + id + '" style="margin-top:10px;margin-bottom:10px;"><b>' + name + '</b><br>' + address + ' ' + city + ', ' + state + ' ' + zipcode + '<br>' + phone + '</p>');
+                        $('#results').append(businessInfo);
+                    });
+                } else {
+                    $('#results').append('<h5>We discovered no results!</h5>');
+                }
+            }
+        });
+
+
   </script>
 </html>

@@ -152,11 +152,24 @@ img {
 /* Donate Page */
 
 #nav-search {
-  margin: 20px auto;
   background-color: white;
   color: #3F220E;
+  border-radius: 4px;
 }
 
-.label-icon {
+#text-info-search {
+  text-align: center;
   color: #3F220E;
+  line-height: 1.25;
+  font-size: 16px;
+  margin: 20px 0px 0px 0px;
+}
+
+#text-results {
+  text-align: left;
+  padding: 5px;
+  margin: 0px;
+  background-color: white;
+  border-radius: 4px;
+  box-shadow: 0px 2px 2px grey;
 }
