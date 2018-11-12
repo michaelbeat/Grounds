@@ -2,13 +2,14 @@
 /* E0FCDE 86FEB1 00BD70 00A097 3F220E */
 .sidenav .sidenav-header h3 {
   margin: 0;
-  padding: 8px 0px;
+  height: 56px;
+  padding: 5px;
 }
 
 .sidenav .sidenav-header {
   text-align: center;
   color: #fff;
-  background-color: #ee6e73;
+  background-color: #3F220E;
 }
 
 #mobile-demo-right img {
