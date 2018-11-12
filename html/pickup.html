@@ -12,7 +12,12 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
   <!-- Custom Styling -->
   <link rel="stylesheet" type="text/css" href="../css/style.css">
-
+  <style>
+    #map {
+      height: calc(100vh - 56px);
+      width: 100%;
+    }
+  </style>
 </head>
 <body>
     <nav>
@@ -62,9 +67,22 @@
         </div>
       </ul>
 
+      <!-- Maps -->
+  <div id="map"></div>
 
   </body>
-
+  <script>
+    function initMap() {
+      var options = {
+        zoom: 11,
+        center: {lat:30.2672,lng:-97.7431}
+      }
+      var map = new google.maps.Map(document.getElementById('map'), options)
+    };
+  </script>
+  <!-- Maps -->
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC17zwRGsPRC86WH9sPD0ssYepeuEqC7nU&callback=initMap"
+    async defer></script>
   <!-- jQuery -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <!-- Materialize JS -->
