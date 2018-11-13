@@ -12,6 +12,8 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
   <!-- Custom Styling -->
   <link rel="stylesheet" type="text/css" href="../css/style.css">
+  <!-- jQuery -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <style>
     #map {
       height: calc(100vh - 56px);
@@ -25,7 +27,7 @@
         <div class="nav-wrapper">
           <a href="" class="brand-logo">Pick-up</a>
           <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-          <a href="#" data-target="mobile-demo-right" class="sidenav-trigger"><i class="material-icons">adb</i></a>
+          <a href="#" data-target="mobile-demo-right" class="sidenav-trigger"><i class="material-icons">place</i></a>
           <ul class="right hide-on-med-and-down">
             <li><a href="index.html">Home</a></li>
             <li><a href="donate.html">Donate</a></li>
@@ -69,32 +71,53 @@
 
       <!-- Maps -->
   <div id="map"></div>
-
   </body>
+  <!-- Materialize JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
   <script>
     function initMap() {
+      // Center and zoom map in on Austin
       var options = {
-        zoom: 11,
-        center: {lat:30.2672,lng:-97.7431}
+        zoom: 10,
+        center: {
+          lat:30.2672,
+          lng:-97.7431
+        },
       }
-      var map = new google.maps.Map(document.getElementById('map'), options)
+
+      // Dummy marker
+      var utMarker = {
+        lat: 30.2849,
+        lng: -97.7341
+      };
+
+      // Creates map on div element map
+      var map = new google.maps.Map(document.getElementById('map'), options);
+
+      // Creates marker on map
+      var marker = new google.maps.Marker({
+        position: utMarker,
+        map: map
+      });
+
+      // Adds on click listener
+      marker.addListener('click', function(event) {
+        console.log(true);
+      });
     };
+    
+    $(document).ready(function(){
+      $('.sidenav').sidenav();
+      $('#mobile-demo-right').sidenav({
+        edge: "right"
+      });
+    });
   </script>
   <!-- Maps -->
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC17zwRGsPRC86WH9sPD0ssYepeuEqC7nU&callback=initMap"
     async defer></script>
-  <!-- jQuery -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <!-- Materialize JS -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
   <!-- Firebase Reference -->
   <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
   <script type="text/javascript">
-  $(document).ready(function(){
-    $('.sidenav').sidenav();
-    $('#mobile-demo-right').sidenav({
-      edge: "right"
-    })
-  });
   </script>
 </html>
