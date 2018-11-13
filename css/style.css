@@ -175,7 +175,7 @@ body {
   margin: 20px 0px 0px 0px;
 }
 
-#text-results {
+.text-results {
   text-align: left;
   padding: 5px;
   margin: 0px;
