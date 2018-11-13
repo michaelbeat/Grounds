@@ -102,7 +102,8 @@ img {
 }
 
 .card {
-  margin: 15px 5px;
+  margin: 15px auto 5px auto;
+  max-width: 600px;
 }
 
 /* Status Page */
@@ -113,6 +114,8 @@ img {
   display: block;
   margin: auto;
   margin-top: 15px;
+  max-width: 600px;
+  width: 100%;
   text-align: left;
   background-color: #00A097;
   color: #fff;
@@ -146,7 +149,12 @@ img {
 }
 
 #img-style {
+  display: block;
+  margin: 0px auto 0px auto;
+  max-width: 600px;
+  width: 100%;
   padding: 0;
+  box-shadow: 0px 2px 2px grey;
 }
 
 /* Donate Page */
@@ -173,3 +181,16 @@ img {
   border-radius: 4px;
   box-shadow: 0px 2px 2px grey;
 }
+
+
+a {
+  color: #3F220E;
+}
+
+/* Profile Page */
+
+#donate-button {
+  width: 100%;
+}
+
+
