@@ -9,6 +9,7 @@
 /* This is the database obj, this is initialized in the setup function. */
 var database;
 
+/* This is going to hold all of the refs that we have in the database when we call databaseGetAll() */
 var allRefs = [];
 
 /*
@@ -28,6 +29,9 @@ function setup(){
 	database = firebase.database();
 }
 
+/*
+  This gets all the refs we have in the database, creates a new object from them, and then adds them to the allRefs array.
+*/
 function databaseGetAll(){
 	allRefs = [];
 	var ref = database.ref();
