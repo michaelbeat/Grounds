@@ -24,7 +24,7 @@ body {
   background-size: cover;
 }
 
-img {
+#logo-image img {
   margin-bottom: 0px;
   max-width: 100%;
   width: 70%;
@@ -51,6 +51,8 @@ img {
   white-space: nowrap;
   overflow: hidden;
   margin: 0;
+  height: 56px;
+  padding: 5px;
   padding: 14px 0px;
 }
 
@@ -192,5 +194,3 @@ a {
 #donate-button {
   width: 100%;
 }
-
-
