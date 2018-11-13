@@ -149,22 +149,24 @@ var databaseObjRef = function(){
 	this.completed = arguments[5] || false;
 	this.enRoute = arguments[6] || -1;
 	
-	/* Make sure you call this after you set the values, that way we don't get any xss attacks. */
-	this.sanitize = function(){
-		this.name.replace("<", "");
-		this.name.replace(">", "");
-		this.location.replace("<", "");
-		this.location.replace(">", "");
-		this.address.replace("<", "");
-		this.address.replace(">", "");
-		this.pickupType.replace("<", "");
-		this.pickupType.replace(">", "");
-		this.id.replace("<", "");
-		this.id.replace(">", "");
-		this.completed.replace("<", "");
-		this.completed.replace(">", "");
-		this.enRoute.replace("<", "");
-		this.enRoute.replace(">", "");
+	/* If you want to use the data directly in the html doc, get the values from this function, that way we don't get any xss attacks. */
+	this.sanitized = function(){
+		return [
+			this.name.replace("<", "&lt;"),
+			this.name.replace(">", "&gt;"),
+			this.location.replace("<", "&lt;"),
+			this.location.replace(">", "&gt;"),
+			this.address.replace("<", "&lt;"),
+			this.address.replace(">", "&gt;"),
+			this.pickupType.replace("<", "&lt;"),
+			this.pickupType.replace(">", "&gt;"),
+			this.id.replace("<", "&lt;"),
+			this.id.replace(">", "&gt;"),
+			this.completed.replace("<", "&lt;"),
+			this.completed.replace(">", "&gt;"),
+			this.enRoute.replace("<", "&lt;"),
+			this.enRoute.replace(">", "&gt;")
+		];
 	}
 	
 	/* This adds this obj to the database. */
@@ -174,18 +176,20 @@ var databaseObjRef = function(){
 	
 	/* This sets the value of the object. */
 	this.setValue = function(valueName, newValue){
-		var other = this;
-		other[valueName] = newValue;
-		databaseSetValue(this.id, valueName, newValue);
+		if(valueName != "id"){
+			var other = this;
+			other[valueName] = newValue;
+			databaseSetValue(this.id, valueName, newValue);
+		}
 	}
 	
 	/* This updates the object with the database values. */
 	this.update = function(snapshot){
-		this.name = snapshot.val().name;
-		this.location = snapshot.val().location;
-		this.pickupType = snapshot.val().pickupType;
+		this.name = (snapshot.hasChild("name")) ? snapshot.val().name : "Not defined!";
+		this.location = (snapshot.hasChild("location")) ? snapshot.val().location : "Not defined!";
+		this.pickupType = (snapshot.hasChild("pickupType")) ? snapshot.val().pickupType : "Not defined!";
 		this.id = snapshot.val().id;
-		this.completed = snapshot.val().completed;
+		this.completed = (snapshot.hasChild("completed")) ? snapshot.val().completed : "Not defined!";
 	}
 	
 	/* Have to create other, because inside of the anon function this is bound to somthing else! */
