@@ -48,10 +48,7 @@
             <div class="col s12 m12">
                 <div class="card darken-1">
                     <div class="card-content text-info-light">
-                        <span class="card-title" id="name-text"></span>
-                        <p style="color:grey">Phone: <span id="phone-text"></span></p>
-                        <p>Address: <span id="address-text"></span></p>
-                        <p>Details: 4 barrels of grounds that need to be picked up before Saturday!</p>
+                        <span id="results"></span>
                     </div>
                 <div class="card-action">
                 <a href="pickup.html" class="waves-effect waves-light btn" id="donate-button">Donate!</a>
@@ -77,38 +74,40 @@
     $('.sidenav').sidenav();
   });
 
-  var business = "Coffee";
+  $('#results').append(businessInfo);
+
+//   var business = "Coffee";
   
-  var myurl = "https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?location=austin&limit=1&term=" + business;
-        $.ajax({
-            url: myurl,
-            headers: {
-            'Authorization':'Bearer Uensef7YvWBDrkLIVTvHbF1RPf2IN989gIxMN9HEvEV8VyXjp4TZ_V8faI3tItTCrIheVIeD-XjS78gcmrmtJ9I0MvJ1kEjU6x1KzdaiUzynr8rMEwSVs9WUlrXlW3Yx',
-        },
-            method: 'GET',
-            dataType: 'json',
-            success: function(data){
-                var totalresults = data.total;
-                if (totalresults > 0){
-                    $.each(data.businesses, function(i, item) {
-                        var phone = item.display_phone;
-                        var name = item.name;
-                        var address = item.location.address1;
-                        var city = item.location.city;
-                        var state = item.location.state;
-                        var zipcode = item.location.zip_code;
-                        $('#name-text').append(name);
-                        $('#address-text').append(address + " ");
-                        $('#address-text').append(city + ", ");
-                        $('#address-text').append(state + " ");
-                        $('#address-text').append(zipcode);
-                        $('#phone-text').append(phone);
-                    });
-                } else {
-                    $('#results').append('<h5>We discovered no results!</h5>');
-                }
-            }
-        });
+//   var myurl = "https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?location=austin&limit=1&term=" + business;
+//         $.ajax({
+//             url: myurl,
+//             headers: {
+//             'Authorization':'Bearer Uensef7YvWBDrkLIVTvHbF1RPf2IN989gIxMN9HEvEV8VyXjp4TZ_V8faI3tItTCrIheVIeD-XjS78gcmrmtJ9I0MvJ1kEjU6x1KzdaiUzynr8rMEwSVs9WUlrXlW3Yx',
+//         },
+//             method: 'GET',
+//             dataType: 'json',
+//             success: function(data){
+//                 var totalresults = data.total;
+//                 if (totalresults > 0){
+//                     $.each(data.businesses, function(i, item) {
+//                         var phone = item.display_phone;
+//                         var name = item.name;
+//                         var address = item.location.address1;
+//                         var city = item.location.city;
+//                         var state = item.location.state;
+//                         var zipcode = item.location.zip_code;
+//                         $('#name-text').append(name);
+//                         $('#address-text').append(address + " ");
+//                         $('#address-text').append(city + ", ");
+//                         $('#address-text').append(state + " ");
+//                         $('#address-text').append(zipcode);
+//                         $('#phone-text').append(phone);
+//                     });
+//                 } else {
+//                     $('#results').append('<h5>We discovered no results!</h5>');
+//                 }
+//             }
+//         });
 
 
   </script>
