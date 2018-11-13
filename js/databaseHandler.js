@@ -9,6 +9,8 @@
 /* This is the database obj, this is initialized in the setup function. */
 var database;
 
+var allRefs = [];
+
 /*
   This is the setup function for our firebase database.
   It initialized the database when we load this file.
@@ -24,6 +26,18 @@ function setup(){
 	};
 	firebase.initializeApp(config);
 	database = firebase.database();
+}
+
+function databaseGetAll(){
+	allRefs = [];
+	var ref = database.ref();
+	ref.on('value', function(snapshot) {
+		snapshot.forEach(function(keysSnapshot) {
+			var keys = keysSnapshot.val();
+			var newObj = new databaseObjRef(keys.id);
+			allRefs.push(newObj);
+		});
+	});
 }
 
 /* 
@@ -125,9 +139,11 @@ function databaseRemove(refPath){
 var databaseObjRef = function(){
 	this.name = arguments[1] || "Not defined!";
 	this.location = arguments[2] || "Not defined!";
-	this.pickupType = arguments[3] || "Not defined!";
+	this.address = arguments[3] || "Not defined!";
+	this.pickupType = arguments[4] || "Not defined!";
 	this.id = arguments[0] || (new Date()).getTime();
-	this.completed = arguments[4] || false;
+	this.completed = arguments[5] || false;
+	this.enRoute = arguments[6] || -1;
 	
 	/* Make sure you call this after you set the values, that way we don't get any xss attacks. */
 	this.sanitize = function(){
@@ -135,10 +151,16 @@ var databaseObjRef = function(){
 		this.name.replace(">", "");
 		this.location.replace("<", "");
 		this.location.replace(">", "");
+		this.address.replace("<", "");
+		this.address.replace(">", "");
 		this.pickupType.replace("<", "");
 		this.pickupType.replace(">", "");
 		this.id.replace("<", "");
 		this.id.replace(">", "");
+		this.completed.replace("<", "");
+		this.completed.replace(">", "");
+		this.enRoute.replace("<", "");
+		this.enRoute.replace(">", "");
 	}
 	
 	/* This adds this obj to the database. */
