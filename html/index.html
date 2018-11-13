@@ -5,22 +5,72 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Project 1</title>
-
   <!-- Styling -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="../css/reset.css">
-  <link rel="stylesheet" type="text/css" href="../css/style.css">
-
   <!-- Materialize CDN -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <!-- Custom Styling -->
+  <link rel="stylesheet" type="text/css" href="../css/style.css">
+
+</head>
+<body>
+  <!-- Navbar -->
+  <nav>
+    <div class="container">
+      <div class="nav-wrapper">
+        <a href="#!" class="brand-logo">Home</a>
+        <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+        <ul class="right hide-on-med-and-down">
+          <li><a href="index.html">About</a></li>
+          <li><a href="donate.html">Donate</a></li>
+          <li><a href="pickup.html">Pick-up</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!-- Sidenav menu -->
+  <ul class="sidenav" id="mobile-demo">
+    <div class="sidenav-header">
+      <h3>Ground</h3>
+    </div>
+    <li><a href="index.html"><i class="material-icons">home</i>Home</a></li>
+    <li><a href="donate.html"><i class="material-icons">place</i>Donate</a></li>
+    <li><a href="pickup.html"><i class="material-icons">directions_car</i>Pick-up</a></li>
+    <li><div class="divider"></div></li>
+    <!-- <li><a href="collapsible.html">Settings</a></li> -->
+  </ul>
+  <!-- Content -->
+  <div class="container" id="home-content">
+    <div class="row">
+      <div id="logo-image">
+        <img src="../images/ground-logo.png" alt="Coffree Logo">
+      </div>
+    </div>
+    <div class="row text-info">
+      <p>The Ground app connects users in the Austin area with local coffee shops looking to dispose of their used grounds in a responsible way. Our users are compost centers, farmers, and gardeners looking for an eco-friendly (and free) substitute for harmful fertilizers. </p>
+    </div>
+    <div class="row">
+      <a href="donate.html" id="user-button" class="waves-effect waves-light btn-large">Donate</a>
+      <a href="pickup.html" id="business-button" class="waves-effect waves-light btn-large">Pick-up</a>
+    </div>
+  </div>
 
   <!-- jQuery -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
+  <!-- Materialize JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
   <!-- Firebase Reference -->
   <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
-</head>
-<body>
-  
-</body>
+
+  <script type="text/javascript">
+  $(document).ready(function(){
+    $('.sidenav').sidenav();
+    $('#mobile-demo-right').sidenav({
+      edge: "right"
+    })
+  });
+  </script>
+
+  </body>
 </html>

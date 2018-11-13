@@ -1,0 +1,196 @@
+/* COlOR PALETTE (Light -> Dark) */
+/* E0FCDE 86FEB1 00BD70 00A097 3F220E */
+
+/* General styles */
+#home-content {
+  text-align: center;
+  margin: auto;
+}
+
+nav .brand-logo {
+  font-size: 26px;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+nav {
+  background-color: #3F220E;
+}
+
+body {
+  background: linear-gradient(#E0FCDE, #00A097);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+#logo-image img {
+  margin-bottom: 0px;
+  max-width: 100%;
+  width: 70%;
+  height: auto;
+  padding: 20px 0px 0px 0px;
+}
+
+.text-info {
+  color: white;
+  line-height: 1.25;
+  font-size: 16px;
+  padding-right: 10px;
+  padding-left: 10px;
+}
+
+.btn, .btn-large, .btn-small {
+  background-color: #00BD70;
+  margin: 5px;
+}
+
+/* Sidenav styles */
+.sidenav .sidenav-header h3 {
+  font-size: 26px;
+  white-space: nowrap;
+  overflow: hidden;
+  margin: 0;
+  height: 56px;
+  padding: 5px;
+  padding: 14px 0px;
+}
+
+.sidenav-header {
+  text-align: center;
+  color: #fff;
+  background-color: #3F220E;
+}
+
+.side-nav {
+  text-align: center;
+}
+
+#mobile-demo-right img {
+  width: 100%;
+}
+
+#mobile-demo {
+  background: white;
+}
+
+.right-aligned {
+  background: white;
+}
+
+.business-container {
+  padding: .5rem;
+}
+
+.business-container h5 {
+  margin: 0 0 .2rem 0;
+}
+
+.business-container #hours {
+  color: gray;
+  margin-bottom: .2rem;
+}
+
+.business-container #address {
+  color: black;
+}
+
+.business-container #claim-button {
+  width: 100%;
+}
+
+.card-action #claim-button {
+  width: 100%;
+}
+
+.card {
+  margin: 15px auto 5px auto;
+  max-width: 600px;
+}
+
+/* Status Page */
+
+#status-card {
+  line-height: 1.25;
+  font-size: 16px;
+  display: block;
+  margin: auto;
+  margin-top: 15px;
+  max-width: 600px;
+  width: 100%;
+  text-align: left;
+  background-color: #00A097;
+  color: #fff;
+}
+
+.time-style {
+  text-align: center;
+}
+
+#time-remaining {
+  line-height: 2;
+  font-size: 30px;
+}
+
+#status-buttons {
+    text-align: center;
+}
+
+#cancel-button {
+    background-color: red;
+}
+
+/* Pick-up Page */
+
+.text-info-light {
+  color: #3F220E;
+  line-height: 1.25;
+  font-size: 16px;
+  padding-right: 10px;
+  padding-left: 10px;
+}
+
+#img-style {
+  display: block;
+  margin: 0px auto 0px auto;
+  max-width: 600px;
+  width: 100%;
+  padding: 0;
+  box-shadow: 0px 2px 2px grey;
+}
+
+/* Donate Page */
+
+#nav-search {
+  background-color: white;
+  color: #3F220E;
+  border-radius: 4px;
+}
+
+#text-info-search {
+  text-align: center;
+  color: #3F220E;
+  line-height: 1.25;
+  font-size: 16px;
+  margin: 20px 0px 0px 0px;
+}
+
+.text-results {
+  text-align: left;
+  padding: 5px;
+  margin: 0px;
+  background-color: white;
+  border-radius: 4px;
+  box-shadow: 0px 2px 2px grey;
+}
+
+
+a {
+  color: #3F220E;
+}
+
+/* Profile Page */
+
+#donate-button {
+  width: 100%;
+}

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Project 1</title>
+  <!-- Styling -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="../css/reset.css">
+  <!-- Materialize CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <!-- Custom Styling -->
+  <link rel="stylesheet" type="text/css" href="../css/style.css">
+  <!-- jQuery -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <style>
+    #map {
+      height: calc(100vh - 56px);
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+    <!-- Navbar -->
+  <nav>
+      <div class="container">
+        <div class="nav-wrapper">
+          <a href="#!" class="brand-logo">Pick-up</a>
+          <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+          <a href="#" data-target="mobile-demo-right" class="sidenav-trigger"><i class="material-icons">place</i></a>
+          <ul class="right hide-on-med-and-down">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="donate.html">Donate</a></li>
+            <li><a href="pickup.html">Pick-up</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <!-- Sidenav menu -->
+    <ul class="sidenav" id="mobile-demo">
+      <div class="sidenav-header">
+        <h3>Ground</h3>
+      </div>
+      <li><a href="index.html"><i class="material-icons">home</i>Home</a></li>
+      <li><a href="donate.html"><i class="material-icons">place</i>Donate</a></li>
+      <li><a href="pickup.html"><i class="material-icons">directions_car</i>Pick-up</a></li>
+      <li><div class="divider"></div></li>
+      <!-- <li><a href="collapsible.html">Settings</a></li> -->
+    </ul>
+
+      <ul class="sidenav" id="mobile-demo-right">
+        <img id="img-style" src="https://www.utexas.edu/sites/default/files/styles/utexas_hero_photo_image/public/tower_hero_v2.jpg" alt="notwork">
+        <div class="row">
+          <div class="col s12 m6">
+            <div class="card darken-1">
+              <div class="card-content text-info-light">
+                <span class="card-title">Kickbutt Coffee</span>
+                <p style="color:grey">Phone: 512-555-5555</p>
+                <p>Address: 5755 Airport Blvd, Austin, TX 78752</p>
+                <p>Details: 4 barrels of grounds that need to be picked up before Saturday!</p>
+              </div>
+              <div class="card-action">
+                <a href="status.html" class="waves-effect waves-light btn" id="claim-button">Claim!</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </ul>
+
+      <!-- Maps -->
+  <div id="map"></div>
+  </body>
+  <!-- Materialize JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <script>
+    function initMap() {
+      // Center and zoom map in on Austin
+      var options = {
+        zoom: 10,
+        center: {
+          lat:30.2672,
+          lng:-97.7431
+        },
+      }
+
+      // Dummy marker
+      var utMarker = {
+        lat: 30.2849,
+        lng: -97.7341
+      };
+
+      // Creates map on div element map
+      var map = new google.maps.Map(document.getElementById('map'), options);
+
+      // Creates marker on map
+      var marker = new google.maps.Marker({
+        position: utMarker,
+        map: map
+      });
+
+      // Adds on click listener
+      marker.addListener('click', function(event) {
+        console.log(true);
+      });
+    };
+
+    $(document).ready(function(){
+      $('.sidenav').sidenav();
+    });
+  </script>
+  <!-- Maps -->
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC17zwRGsPRC86WH9sPD0ssYepeuEqC7nU&callback=initMap"
+    async defer></script>
+  <!-- Firebase Reference -->
+  <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
+</html>
