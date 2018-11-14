@@ -208,6 +208,7 @@ var databaseObjRef = function(){
     this.long = (snapshot.hasChild("long")) ? snapshot.val().long : "Not defined!";
     this.lat = (snapshot.hasChild("lat")) ? snapshot.val().lat : "Not defined!";
     this.imageUrl = (snapshot.hasChild("imageUrl")) ? snapshot.val().imageUrl : "Not defined!";
+    this.phone = (snapshot.hasChild("phone")) ? snapshot.val().imageUrl : "Not defined!";
 	}
 
 	/* Have to create other, because inside of the anon function this is bound to somthing else! */
