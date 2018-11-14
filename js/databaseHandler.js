@@ -33,9 +33,9 @@ function setup(){
   This gets all the refs we have in the database, creates a new object from them, and then adds them to the allRefs array.
 */
 function databaseGetAll(){
-	allRefs = [];
 	var ref = database.ref();
 	ref.on('value', function(snapshot) {
+		allRefs = [];
 		snapshot.forEach(function(keysSnapshot) {
 			var keys = keysSnapshot.val();
 			var newObj = new databaseObjRef(keys.id);
@@ -174,6 +174,12 @@ var databaseObjRef = function(){
 		databaseSet(this.id, this);
 	}
 	
+	/* Makes this object take its own life. */
+	this.killMe = function(){
+		this.setValue("completed", true);
+		databaseRemove(this.id);
+	}
+	
 	/* This sets the value of the object. */
 	this.setValue = function(valueName, newValue){
 		if(valueName != "id"){
@@ -188,7 +194,7 @@ var databaseObjRef = function(){
 		this.name = (snapshot.hasChild("name")) ? snapshot.val().name : "Not defined!";
 		this.location = (snapshot.hasChild("location")) ? snapshot.val().location : "Not defined!";
 		this.pickupType = (snapshot.hasChild("pickupType")) ? snapshot.val().pickupType : "Not defined!";
-		this.id = snapshot.val().id;
+		this.id = (snapshot.hasChild("pickupType")) ? snapshot.val().id : this.id;
 		this.completed = (snapshot.hasChild("completed")) ? snapshot.val().completed : "Not defined!";
 	}
 	
@@ -196,10 +202,12 @@ var databaseObjRef = function(){
 	var other = this;
 	database.ref(this.id).on("value", function(snapshot){
 		other.update(snapshot);
-		console.log("updated!");
 	});
 	
 }
 
 /* Important. This sets up the database for use in the program. */
 setup();
+
+/* This sets up all the previously created databaseObjRefs from the database, and puts them into the array, allRefs. */
+databaseGetAll();
