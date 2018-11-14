@@ -201,12 +201,19 @@ var databaseObjRef = function(){
 		this.pickupType = (snapshot.hasChild("pickupType")) ? snapshot.val().pickupType : "Not defined!";
 		this.id = (snapshot.hasChild("pickupType")) ? snapshot.val().id : this.id;
 		this.completed = (snapshot.hasChild("completed")) ? snapshot.val().completed : "Not defined!";
+    this.address = (snapshot.hasChild("address")) ? snapshot.val().address : "Not defined!";
+    this.zipCode = (snapshot.hasChild("zipCode")) ? snapshot.val().zipCode : "Not defined!";
+    this.state = (snapshot.hasChild("state")) ? snapshot.val().state : "Not defined!";
+    this.long = (snapshot.hasChild("long")) ? snapshot.val().long : "Not defined!";
+    this.lat = (snapshot.hasChild("lat")) ? snapshot.val().lat : "Not defined!";
+    this.imageUrl = (snapshot.hasChild("imageUrl")) ? snapshot.val().imageUrl : "Not defined!";
 	}
 	
 	/* Have to create other, because inside of the anon function this is bound to somthing else! */
 	var other = this;
 	database.ref(this.id).on("value", function(snapshot){
 		other.update(snapshot);
+    console.log(this.id + " updated databaseObjRef!");
 	});
 	
 }
