@@ -125,7 +125,9 @@
       showElement(0);
       currentBiz = newBiz;
       $("#results-profile").html('<p class="text-info-light" id="' + newBiz.name + '" style="margin-top:10px;margin-bottom:10px;"><b>' + newBiz.name + '</b><br>' + newBiz.address + ' ' + newBiz.city + ', ' + newBiz.state + ' ' + newBiz.zipCode + '<br>' + newBiz.phone + '</p></div>');
-        $('#img-result').html('<img id="img-profile" src="' + newBiz.imageUrl + '">');
+      $('#img-result').html('<img id="img-profile" src="' + newBiz.imageUrl + '">');
+      console.log(currentBiz.lat);
+      console.log(currentBiz.long);
     }
     
     /* Look at this unwieldly monster! Looks like a job for refactory man! This does the yelp ajax call and adds the relevent data from that call. */
@@ -146,7 +148,7 @@
                 var totalresults = data.total;
                 if (totalresults > 0){
                     $.each(data.businesses, function(i, item) {
-                      var newBiz = new BusinessInfo(item.name, item.location.address1, item.location.city, item.location.state, item.location.zip_code, item.display_phone, item.image_url);
+                      var newBiz = new BusinessInfo(item.name, item.location.address1, item.location.city, item.location.state, item.location.zip_code, item.display_phone, item.image_url, item.coordinates.latitude, item.coordinates.longitude);
                       
                       var container = $("<div>");
                       container.on ("click", function(){
@@ -176,6 +178,8 @@
       fireVar.setValue("zipCode", currentBiz.zipCode);
       fireVar.setValue("phone", currentBiz.phone);
       fireVar.setValue("imageUrl", currentBiz.imageUrl);
+      fireVar.setValue("lat", currentBiz.latitude);
+      fireVar.setValue("long", currentBiz.longitude);
       fireVar.addMe();
     });
     
@@ -188,6 +192,8 @@
       this.zipCode = arguments[4] || "N/A";
       this.phone = arguments[5] || "N/A";
       this.imageUrl = arguments[6] || "N/A";
+      this.lat = arguments[7] || "N/A";
+      this.long = arguments[8] || "N/A";
     }
     
     showElement(1);
