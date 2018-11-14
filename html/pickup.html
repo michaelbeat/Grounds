@@ -79,6 +79,10 @@
   <div id="map"></div>
   </body>
   <script>
+    $(document).ready(function(){
+      $('.sidenav').sidenav();
+    });
+
     function initMap() {
       var options = {
         zoom: 10,
@@ -97,10 +101,14 @@
             lat: ref.lat,
             lng: ref.long
           },
-          map: map
+          map: map,
+          id: ref.id,
+          class: "sidenav-trigger",
+          "data-target": "mobile-demo"
         })
-        console.log(ref.id);
-        console.log(databaseGetValue(ref.id, "name"));
+        marker.addListener("click", function() {
+          console.log(this.class);
+        })
       })
     }
   </script>
