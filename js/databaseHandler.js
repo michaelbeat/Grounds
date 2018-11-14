@@ -9,6 +9,9 @@
 /* This is the database obj, this is initialized in the setup function. */
 var database;
 
+/* This is going to hold all of the refs that we have in the database when we call databaseGetAll() */
+var allRefs = [];
+
 /*
   This is the setup function for our firebase database.
   It initialized the database when we load this file.
@@ -24,6 +27,21 @@ function setup(){
 	};
 	firebase.initializeApp(config);
 	database = firebase.database();
+}
+
+/*
+  This gets all the refs we have in the database, creates a new object from them, and then adds them to the allRefs array.
+*/
+function databaseGetAll(){
+	var ref = database.ref();
+	ref.on('value', function(snapshot) {
+		allRefs = [];
+		snapshot.forEach(function(keysSnapshot) {
+			var keys = keysSnapshot.val();
+			var newObj = new databaseObjRef(keys.id);
+			allRefs.push(newObj);
+		});
+	});
 }
 
 /* 
@@ -125,20 +143,30 @@ function databaseRemove(refPath){
 var databaseObjRef = function(){
 	this.name = arguments[1] || "Not defined!";
 	this.location = arguments[2] || "Not defined!";
-	this.pickupType = arguments[3] || "Not defined!";
+	this.address = arguments[3] || "Not defined!";
+	this.pickupType = arguments[4] || "Not defined!";
 	this.id = arguments[0] || (new Date()).getTime();
-	this.completed = arguments[4] || false;
+	this.completed = arguments[5] || false;
+	this.enRoute = arguments[6] || -1;
 	
-	/* Make sure you call this after you set the values, that way we don't get any xss attacks. */
-	this.sanitize = function(){
-		this.name.replace("<", "");
-		this.name.replace(">", "");
-		this.location.replace("<", "");
-		this.location.replace(">", "");
-		this.pickupType.replace("<", "");
-		this.pickupType.replace(">", "");
-		this.id.replace("<", "");
-		this.id.replace(">", "");
+	/* If you want to use the data directly in the html doc, get the values from this function, that way we don't get any xss attacks. */
+	this.sanitized = function(){
+		return [
+			this.name.replace("<", "&lt;"),
+			this.name.replace(">", "&gt;"),
+			this.location.replace("<", "&lt;"),
+			this.location.replace(">", "&gt;"),
+			this.address.replace("<", "&lt;"),
+			this.address.replace(">", "&gt;"),
+			this.pickupType.replace("<", "&lt;"),
+			this.pickupType.replace(">", "&gt;"),
+			this.id.replace("<", "&lt;"),
+			this.id.replace(">", "&gt;"),
+			this.completed.replace("<", "&lt;"),
+			this.completed.replace(">", "&gt;"),
+			this.enRoute.replace("<", "&lt;"),
+			this.enRoute.replace(">", "&gt;")
+		];
 	}
 	
 	/* This adds this obj to the database. */
@@ -146,30 +174,40 @@ var databaseObjRef = function(){
 		databaseSet(this.id, this);
 	}
 	
+	/* Makes this object take its own life. */
+	this.killMe = function(){
+		this.setValue("completed", true);
+		databaseRemove(this.id);
+	}
+	
 	/* This sets the value of the object. */
 	this.setValue = function(valueName, newValue){
-		var other = this;
-		other[valueName] = newValue;
-		databaseSetValue(this.id, valueName, newValue);
+		if(valueName != "id"){
+			var other = this;
+			other[valueName] = newValue;
+			databaseSetValue(this.id, valueName, newValue);
+		}
 	}
 	
 	/* This updates the object with the database values. */
 	this.update = function(snapshot){
-		this.name = snapshot.val().name;
-		this.location = snapshot.val().location;
-		this.pickupType = snapshot.val().pickupType;
-		this.id = snapshot.val().id;
-		this.completed = snapshot.val().completed;
+		this.name = (snapshot.hasChild("name")) ? snapshot.val().name : "Not defined!";
+		this.location = (snapshot.hasChild("location")) ? snapshot.val().location : "Not defined!";
+		this.pickupType = (snapshot.hasChild("pickupType")) ? snapshot.val().pickupType : "Not defined!";
+		this.id = (snapshot.hasChild("pickupType")) ? snapshot.val().id : this.id;
+		this.completed = (snapshot.hasChild("completed")) ? snapshot.val().completed : "Not defined!";
 	}
 	
 	/* Have to create other, because inside of the anon function this is bound to somthing else! */
 	var other = this;
 	database.ref(this.id).on("value", function(snapshot){
 		other.update(snapshot);
-		console.log("updated!");
 	});
 	
 }
 
 /* Important. This sets up the database for use in the program. */
 setup();
+
+/* This sets up all the previously created databaseObjRefs from the database, and puts them into the array, allRefs. */
+databaseGetAll();
