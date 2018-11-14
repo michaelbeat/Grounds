@@ -44,6 +44,20 @@ function databaseGetAll(){
 	});
 }
 
+/* This gives you an array one time that contains all of the current requests. */
+function databaseGiveAll(){
+  var result = []
+  var ref = database.ref();
+	ref.once('value', function(snapshot) {
+		snapshot.forEach(function(keysSnapshot) {
+			var keys = keysSnapshot.val();
+			var newObj = new databaseObjRef(keys.id);
+			result.push(newObj);
+		});
+	});
+  return result;
+}
+
 /* 
   This retrieves a requested value from a ref, via the refPath and returns it.
 */
