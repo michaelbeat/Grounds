@@ -38,7 +38,7 @@
         <h3>Ground</h3>
       </div>
       <li><a href="index.html"><i class="material-icons">home</i>Home</a></li>
-      <li><a href="donate.html"><i class="material-icons">place</i>Donate</a></li>
+      <li><p href="donate.html"></p><i class="material-icons">place</i>Donate</a></li>
       <li><a href="pickup.html"><i class="material-icons">directions_car</i>Pick-up</a></li>
       <li><div class="divider"></div></li>
       <!-- <li><a href="collapsible.html">Settings</a></li> -->
@@ -82,7 +82,7 @@
                           <span id="results-profile"></span>
                       </div>
                   <div class="card-action">
-                  <a href="pickup.html" class="waves-effect waves-light btn" id="donate-button">Donate!</a>
+                  <p class="waves-effect waves-light btn" id="donate-button">Donate!</p>
               </div>
           </div>
       </div>
@@ -126,8 +126,6 @@
       currentBiz = newBiz;
       $("#results-profile").html('<p class="text-info-light" id="' + newBiz.name + '" style="margin-top:10px;margin-bottom:10px;"><b>' + newBiz.name + '</b><br>' + newBiz.address + ' ' + newBiz.city + ', ' + newBiz.state + ' ' + newBiz.zipCode + '<br>' + newBiz.phone + '</p></div>');
       $('#img-result').html('<img id="img-profile" src="' + newBiz.imageUrl + '">');
-      console.log(currentBiz.lat);
-      console.log(currentBiz.long);
     }
     
     /* Look at this unwieldly monster! Looks like a job for refactory man! This does the yelp ajax call and adds the relevent data from that call. */
@@ -171,16 +169,19 @@
     $("#donate-button").on("click", function() {
       var id = (new Date()).getTime();
       var fireVar = new databaseObjRef(id);
-      fireVar.setValue("name", currentBiz.name);
-      fireVar.setValue("address", currentBiz.address);
-      fireVar.setValue("city", currentBiz.city);
-      fireVar.setValue("state", currentBiz.state);
-      fireVar.setValue("zipCode", currentBiz.zipCode);
-      fireVar.setValue("phone", currentBiz.phone);
-      fireVar.setValue("imageUrl", currentBiz.imageUrl);
-      fireVar.setValue("lat", currentBiz.latitude);
-      fireVar.setValue("long", currentBiz.longitude);
+      databaseSetValue(id, "name", currentBiz.name);
+      databaseSetValue(id, "address", currentBiz.address);
+      databaseSetValue(id, "city", currentBiz.city);
+      databaseSetValue(id, "state", currentBiz.state);
+      databaseSetValue(id, "zipCode", currentBiz.zipCode);
+      databaseSetValue(id, "phone", currentBiz.phone);
+      databaseSetValue(id, "imageUrl", currentBiz.imageUrl);
+      databaseSetValue(id, "lat", currentBiz.lat);
+      databaseSetValue(id, "long", currentBiz.long);
+      console.log(currentBiz.lat);
+      console.log(currentBiz.long);
       fireVar.addMe();
+      window.location = "pickup.html";
     });
     
     /* This constructor is what we use to easily pass information about a business with. */
@@ -195,6 +196,8 @@
       this.lat = arguments[7] || "N/A";
       this.long = arguments[8] || "N/A";
     }
+
+    
     
     showElement(1);
   </script>
