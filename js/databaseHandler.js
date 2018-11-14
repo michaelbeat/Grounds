@@ -41,7 +41,9 @@ function databaseGetAll(){
 			var newObj = new databaseObjRef(keys.id);
 			allRefs.push(newObj);
 		});
-		initMap();
+		if(window.location.href.includes("pickup.html")){
+			initMap();
+		}
 	});
 }
 

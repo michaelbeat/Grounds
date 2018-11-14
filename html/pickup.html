@@ -68,7 +68,11 @@
                 <p>Details: 4 barrels of grounds that need to be picked up before Saturday!</p>
               </div>
               <div class="card-action">
-                <a href="status.html" class="waves-effect waves-light btn" id="claim-button">Claim!</a>
+                <form action="status.html">
+                  <input style="display:none;" type="text" name="id" id="refID">
+                  <br><br>
+                  <input type="submit" value="Claim!">
+                </form>
               </div>
             </div>
           </div>
@@ -117,6 +121,8 @@
           $("#cardTitle").text(ref.name);
           $("#cardPhone").text("Phone:" + ref.phone);
           $("#cardAddress").text(ref.address);
+          console.log(ref.id);
+          $("#refID").attr("value", ref.id)
         });
       })
     }
