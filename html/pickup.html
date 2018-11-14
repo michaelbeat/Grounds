@@ -108,15 +108,13 @@
         })
         google.maps.event.addListener(marker, 'click', function(e){
           console.log(e);
-          var bullshit = $(e.ya.currentTarget.parentElement.parentElement);
+          var bullshit = $("img");
           bullshit.sidenav();
           bullshit.addClass("sidenav-trigger");
           bullshit.attr("data-target", "mobile-demo-right");
           $("#cardTitle").text(ref.name);
-          console.log(ref.phone);
-          console.log(ref.address);
-          // $("#cardPhone").append(ref.phone);
-          // $("#cardAddress").text(ref.address);
+          $("#cardPhone").text("Phone:" + ref.phone);
+          $("#cardAddress").text(ref.address);
         });
       })
     }
