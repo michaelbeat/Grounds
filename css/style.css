@@ -26,13 +26,14 @@ body {
 
 #logo-image img {
   margin-bottom: 0px;
-  max-width: 100%;
+  max-width: 400px;
   width: 70%;
   height: auto;
   padding: 20px 0px 0px 0px;
 }
 
 .text-info {
+  max-width: 750px;
   color: white;
   line-height: 1.25;
   font-size: 16px;
@@ -40,9 +41,13 @@ body {
   padding-left: 10px;
 }
 
-.btn, .btn-large, .btn-small {
+.btn-large, .btn-small {
   background-color: #00BD70;
   margin: 5px;
+}
+
+.btn {
+  background-color: #00BD70;
 }
 
 /* Sidenav styles */
@@ -78,17 +83,8 @@ body {
   background: white;
 }
 
-.business-container {
-  padding: .5rem;
-}
-
-.business-container h5 {
-  margin: 0 0 .2rem 0;
-}
-
 .business-container #hours {
   color: gray;
-  margin-bottom: .2rem;
 }
 
 .business-container #address {
@@ -103,9 +99,12 @@ body {
   width: 100%;
 }
 
-.card {
-  margin: 15px auto 5px auto;
+.card .card-content {
+  margin-top: 15px;
+  margin-left: auto;
+  margin-right: auto;
   max-width: 600px;
+  padding: 10px 20px 10px 20px;
 }
 
 /* Status Page */
@@ -119,8 +118,8 @@ body {
   max-width: 600px;
   width: 100%;
   text-align: left;
-  background-color: #00A097;
-  color: #fff;
+  background-color: white;
+  color: #3F220E;
 }
 
 .time-style {
@@ -146,8 +145,6 @@ body {
   color: #3F220E;
   line-height: 1.25;
   font-size: 16px;
-  padding-right: 10px;
-  padding-left: 10px;
 }
 
 #img-style {
@@ -161,10 +158,31 @@ body {
 
 /* Donate Page */
 
+nav .input-field label i {
+  color: #3F220E;
+}
+
+.input-field input[type=search] ~ .mdi-navigation-close, .input-field input[type=search] ~ .material-icons {
+  color: #3F220E;
+}
+
+.label-icon, .active{
+  color: #3F220E;
+}
+
+.nav-wrapper {
+  padding: 0px;
+  margin: auto;
+  width: 100%;
+}
+
 #nav-search {
   background-color: white;
   color: #3F220E;
   border-radius: 4px;
+  max-width: 500px;
+  padding: 0px;
+  margin: auto;
 }
 
 #text-info-search {
@@ -176,9 +194,10 @@ body {
 }
 
 .text-results {
+  max-width: 500px;
   text-align: left;
   padding: 5px;
-  margin: 0px;
+  margin: auto;
   background-color: white;
   border-radius: 4px;
   box-shadow: 0px 2px 2px grey;
@@ -193,4 +212,9 @@ a {
 
 #donate-button {
   width: 100%;
+}
+
+.card.darken-1 {
+  max-width: 500px;
+  margin: auto;
 }
