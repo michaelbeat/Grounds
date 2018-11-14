@@ -44,20 +44,6 @@ function databaseGetAll(){
 	});
 }
 
-/* This gives you an array one time that contains all of the current requests. */
-function databaseGiveAll(){
-  var result = []
-  var ref = database.ref();
-	ref.once('value', function(snapshot) {
-		snapshot.forEach(function(keysSnapshot) {
-			var keys = keysSnapshot.val();
-			var newObj = new databaseObjRef(keys.id);
-			result.push(newObj);
-		});
-	});
-  return result;
-}
-
 /* 
   This retrieves a requested value from a ref, via the refPath and returns it.
 */
@@ -156,12 +142,17 @@ function databaseRemove(refPath){
 */
 var databaseObjRef = function(){
 	this.name = arguments[1] || "Not defined!";
-	this.location = arguments[2] || "Not defined!";
-	this.address = arguments[3] || "Not defined!";
-	this.pickupType = arguments[4] || "Not defined!";
+	this.address = arguments[2] || "Not defined!";
+  this.city = arguments[3] || "Not defined!";
+  this.state = arguments[4] || "Not defined!";
+  this.zipCode = arguments[5] || "Not defined!";
+	this.pickupType = arguments[6] || "Not defined!";
 	this.id = arguments[0] || (new Date()).getTime();
-	this.completed = arguments[5] || false;
-	this.enRoute = arguments[6] || -1;
+	this.completed = arguments[7] || false;
+	this.enRoute = arguments[8] || -1;
+  this.lat = arguments[9] || 0;
+  this.long = arguments[10] || 0;
+  this.imageUrl = arguments[11] || "Not defined!";
 	
 	/* If you want to use the data directly in the html doc, get the values from this function, that way we don't get any xss attacks. */
 	this.sanitized = function(){
