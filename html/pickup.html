@@ -106,9 +106,13 @@
           class: "sidenav-trigger",
           "data-target": "mobile-demo"
         })
-        marker.addListener("click", function() {
-          console.log(this.class);
-        })
+        google.maps.event.addListener(marker, 'click', function(e){
+          console.log(e);
+          var bullshit = $(e.ya.currentTarget.parentElement.parentElement);
+          bullshit.sidenav();
+          bullshit.addClass("sidenav-trigger");
+          bullshit.attr("data-target", "mobile-demo");   
+        });
       })
     }
   </script>
