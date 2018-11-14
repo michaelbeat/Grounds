@@ -108,8 +108,7 @@
         })
         google.maps.event.addListener(marker, 'click', function(e){
           console.log(e);
-          debugger;
-          var bullshit = $(e.ya.currentTarget.parentElement.parentElement);
+          var bullshit = $(e.ya.currentTarget);
           bullshit.sidenav();
           bullshit.addClass("sidenav-trigger");
           bullshit.attr("data-target", "mobile-demo");   
