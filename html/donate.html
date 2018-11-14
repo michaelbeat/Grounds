@@ -12,6 +12,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
   <!-- Custom Styling -->
   <link rel="stylesheet" type="text/css" href="../css/style.css">
+
   <!-- firebase database -->
   <script src="https://www.gstatic.com/firebasejs/5.5.7/firebase.js"></script>
 
@@ -54,7 +55,7 @@
             <div class="container nav-wrapper">
               <form> 
                 <div class="input-field">
-                  <input id="search-business" type="search" required>
+                  <input id="search-business" type="search" autocomplete="off" required>
                   <label class="label-icon" for="search-business">
                     <i class="material-icons">search</i>
                   </label>
@@ -72,7 +73,7 @@
 
     <!-- Business Profile -->
     <div id="profile-show">
-      <img id="img-style" src="http://woodfiredcoffee.com/wp-content/uploads/2014/06/News-OnlineOrder.jpg" alt="notwork">
+      <div id="img-result"></div>
       <div class="container">
           <div class="row">
               <div class="col s12 m12">
@@ -86,9 +87,6 @@
           </div>
       </div>
     </div>
-
-
-  </body>
 
   <!-- jQuery -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -132,10 +130,13 @@
     this.phone = arguments[5] || "N/A";
   }
 
+  var currentBiz;
   function clickFunction(newBiz) {
+    event.preventDefault();
     showElement(0);
+    currentBiz = newBiz;
     $("#results-profile").html('<p class="text-info-light" id="' + newBiz.name + '" style="margin-top:10px;margin-bottom:10px;"><b>' + newBiz.name + '</b><br>' + newBiz.address + ' ' + newBiz.city + ', ' + newBiz.state + ' ' + newBiz.zipCode + '<br>' + newBiz.phone + '</p></div>');
-    currrentBiz = newBiz;
+    // $('#img-result').html('<img src="' + newBiz.image_url + '" style="width:200px;height:150px;">');
   }
 
   $("form").submit(function( event ) {
@@ -157,13 +158,14 @@
                   $.each(data.businesses, function(i, item) {
                       var styleClass = "text-results";
 
-                      var newBiz = new BusinessInfo(item.name, item.location.address1, item.location.city, item.location.state, item.location.zip_code, item.display_phone);
+                      var newBiz = new BusinessInfo(item.name, item.location.address1, item.location.city, item.location.state, item.location.zip_code, item.display_phone, item.image_url);
                       businesses.push(newBiz);
 
                       var container = $("<div>");
                       container.on ("click", function(){
                         clickFunction(newBiz);
                       });
+
                       container.html('<p class="' + styleClass + '" id="' + newBiz.name + '" style="margin-top:10px;margin-bottom:10px;"><b>' + newBiz.name + '</b><br>' + newBiz.address + ' ' + newBiz.city + ', ' + newBiz.state + ' ' + newBiz.zipCode + '<br>' + newBiz.phone + '</p></div>');
 
                       $('#results').append(container);
@@ -176,9 +178,7 @@
         });
   });
 
-  var currentBiz;
-
-  $("donate-button").on ("click", function() {
+  $("#donate-button").on ("click", function() {
     var id = (new Date()).getTime();
     var fireVar = new databaseObjRef(id);
     fireVar.setValue("name", currentBiz.name);
@@ -187,4 +187,6 @@
   });
 
   </script>
+  </body>
+
 </html>
