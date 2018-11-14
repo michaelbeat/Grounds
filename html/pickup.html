@@ -105,6 +105,16 @@
           id: ref.id,
           class: "sidenav-trigger",
           "data-target": "mobile-demo"
+<<<<<<< HEAD
+=======
+        })
+        google.maps.event.addListener(marker, 'click', function(e){
+          console.log(e);
+          var bullshit = $(e.ya.currentTarget.parentElement.parentElement);
+          bullshit.sidenav();
+          bullshit.addClass("sidenav-trigger");
+          bullshit.attr("data-target", "mobile-demo");   
+>>>>>>> f55f4d937ea2cefd3d5912df27ff835316722baf
         });
       })
     }
