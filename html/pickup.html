@@ -93,8 +93,7 @@
       }
       // Creates map on div element map
       var map = new google.maps.Map(document.getElementById('map'), options);
-      // Creates marker on map
-      console.log(allRefs);
+      // Creates marker on map for each firebase ref
       allRefs.forEach(function(ref) {
         var marker = new google.maps.Marker({
           position: {
@@ -103,20 +102,21 @@
           },
           map: map,
           id: ref.id,
-          class: "sidenav-trigger",
-          "data-target": "mobile-demo"
         })
+        // If cursor is clicked
         google.maps.event.addListener(marker, 'click', function(e){
-          console.log(e);
           var bullshit = $("img");
+          if (window.innerWidth >= 736) {
+            bullshit = $(e.ya.currentTarget.parentElement.parentElement);
+          }
           bullshit.sidenav();
           bullshit.addClass("sidenav-trigger");
           bullshit.attr("data-target", "mobile-demo-right");
+          // Update sidenav with new business info
           $("#img-style").attr("src", ref.imageUrl)
           $("#cardTitle").text(ref.name);
           $("#cardPhone").text("Phone:" + ref.phone);
           $("#cardAddress").text(ref.address);
-          console.log(ref.imageUrl)
         });
       })
     }
