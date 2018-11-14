@@ -62,9 +62,9 @@
           <div class="col s12 m6">
             <div class="card darken-1">
               <div class="card-content text-info-light">
-                <span class="card-title">Kickbutt Coffee</span>
-                <p style="color:grey">Phone: 512-555-5555</p>
-                <p>Address: 5755 Airport Blvd, Austin, TX 78752</p>
+                <span class="card-title" id="cardTitle">Kickbutt Coffee</span>
+                <p style="color:grey" id="cardPhone"></p>
+                <p id="cardAddress">Address: 5755 Airport Blvd, Austin, TX 78752</p>
                 <p>Details: 4 barrels of grounds that need to be picked up before Saturday!</p>
               </div>
               <div class="card-action">
@@ -105,16 +105,18 @@
           id: ref.id,
           class: "sidenav-trigger",
           "data-target": "mobile-demo"
-<<<<<<< HEAD
-=======
         })
         google.maps.event.addListener(marker, 'click', function(e){
           console.log(e);
           var bullshit = $(e.ya.currentTarget.parentElement.parentElement);
           bullshit.sidenav();
           bullshit.addClass("sidenav-trigger");
-          bullshit.attr("data-target", "mobile-demo");   
->>>>>>> f55f4d937ea2cefd3d5912df27ff835316722baf
+          bullshit.attr("data-target", "mobile-demo-right");
+          $("#cardTitle").text(ref.name);
+          console.log(ref.phone);
+          console.log(ref.address);
+          // $("#cardPhone").append(ref.phone);
+          // $("#cardAddress").text(ref.address);
         });
       })
     }
