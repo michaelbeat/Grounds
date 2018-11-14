@@ -125,7 +125,7 @@
       showElement(0);
       currentBiz = newBiz;
       $("#results-profile").html('<p class="text-info-light" id="' + newBiz.name + '" style="margin-top:10px;margin-bottom:10px;"><b>' + newBiz.name + '</b><br>' + newBiz.address + ' ' + newBiz.city + ', ' + newBiz.state + ' ' + newBiz.zipCode + '<br>' + newBiz.phone + '</p></div>');
-        $('#img-result').html('<img src="' + newBiz.imageUrl + '" style="width:35%;margin:auto;">');
+        $('#img-result').html('<img id="img-profile" src="' + newBiz.imageUrl + '">');
     }
     
     /* Look at this unwieldly monster! Looks like a job for refactory man! This does the yelp ajax call and adds the relevent data from that call. */
