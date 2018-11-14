@@ -180,7 +180,7 @@ nav .input-field label i {
   background-color: white;
   color: #3F220E;
   border-radius: 4px;
-  max-width: 500px;
+  max-width: 600px;
   padding: 0px;
   margin: auto;
 }
@@ -194,7 +194,7 @@ nav .input-field label i {
 }
 
 .text-results {
-  max-width: 500px;
+  max-width: 600px;
   text-align: left;
   padding: 5px;
   margin: auto;
@@ -214,14 +214,16 @@ a {
 }
 
 .card.darken-1 {
-  max-width: 500px;
+  max-width: 600px;
   margin: auto;
 }
 
 #img-profile {
+  display: block;
   object-fit: cover;
-  margin: 0px auto 0px auto;
+  margin: auto;
+  max-width: 600px;
   width: 100%;
-  height: 200px;
+  height: 250px;
   box-shadow: 0px 2px 2px grey;
 }
