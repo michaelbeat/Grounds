@@ -218,7 +218,6 @@ var databaseObjRef = function(){
 	var other = this;
 	database.ref(this.id).on("value", function(snapshot){
 		other.update(snapshot);
-    console.log(this.id + " updated databaseObjRef!");
 	});
 
 }
