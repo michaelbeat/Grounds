@@ -1,6 +1,6 @@
 # Grounds
 
-Mobile responsive web application built to provide a platform that connects local businesses & restaurants looking to get rid of their coffee grounds and people looking to recycle and fertalize those grounds. This project can be viewed [here](https://michaelbeat.github.io/Project_1/).
+Mobile responsive web application built to provide a platform that connects local businesses & restaurants with local residents looking to get rid of their coffee grounds and people looking to recycle and fertilize those grounds. This project can be viewed [here](https://michaelbeat.github.io/Project_1/).
 
 ## Team Members
 Brian Duong - Project Manager/Frontend  
