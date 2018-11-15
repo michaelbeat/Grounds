@@ -203,14 +203,15 @@ var databaseObjRef = function(){
 		this.location = (snapshot.hasChild("location")) ? snapshot.val().location : "Not defined!";
 		this.pickupType = (snapshot.hasChild("pickupType")) ? snapshot.val().pickupType : "Not defined!";
 		this.id = (snapshot.hasChild("pickupType")) ? snapshot.val().id : this.id;
-		this.completed = (snapshot.hasChild("completed")) ? snapshot.val().completed : "Not defined!";
+		this.completed = (snapshot.hasChild("completed")) ? snapshot.val().completed : false;
     this.address = (snapshot.hasChild("address")) ? snapshot.val().address : "Not defined!";
     this.zipCode = (snapshot.hasChild("zipCode")) ? snapshot.val().zipCode : "Not defined!";
     this.state = (snapshot.hasChild("state")) ? snapshot.val().state : "Not defined!";
-    this.long = (snapshot.hasChild("long")) ? snapshot.val().long : "Not defined!";
-    this.lat = (snapshot.hasChild("lat")) ? snapshot.val().lat : "Not defined!";
+    this.long = (snapshot.hasChild("long")) ? snapshot.val().long : 0;
+    this.lat = (snapshot.hasChild("lat")) ? snapshot.val().lat : 0;
     this.imageUrl = (snapshot.hasChild("imageUrl")) ? snapshot.val().imageUrl : "Not defined!";
     this.phone = (snapshot.hasChild("phone")) ? snapshot.val().phone : "Not defined!";
+    this.enRoute = (snapshot.hasChild("enRoute")) ? snapshot.val().enRoute : -1;
 	}
 
 	/* Have to create other, because inside of the anon function this is bound to somthing else! */

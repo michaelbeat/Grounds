@@ -30,7 +30,6 @@
         </div>
       </div>
     </nav>
-
     <!-- Sidenav menu -->
     <ul class="sidenav" id="mobile-demo">
       <div class="sidenav-header">
@@ -64,7 +63,7 @@
       </div>
     </div>
     <div class="row" id="status-buttons">
-      <a href="pickup.html" id="cancel-button" class="waves-effect waves-light btn-large">Cancel</a>
+      <p id="cancel-button" class="waves-effect waves-light btn-large">Cancel</p>
       <a href="index.html" id="complete-button" class="waves-effect waves-light btn-large">Complete</a>
     </div>
 
@@ -75,68 +74,7 @@
     <!-- Firebase Reference -->
     <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
 
-    <script type="text/javascript">
-    // Obtain name and id from url
-    var urlName = window.location.href.substring(window.location.href.indexOf("name=")+5, window.location.href.length);
-    var businessName = urlName.split("+").join(" ");
-    var idString = window.location.href.substring(window.location.href.indexOf("=")+1, window.location.href.length);
-    var id = idString.substring(0,13);
-    // Set business name
-    $("#business-name").text(businessName);
-    // Initialize sidebar
-    $(document).ready(function(){
-      $('.sidenav').sidenav();
-    });
-
-    $("#complete-button").on("click", function() {
-      databaseSetValue(id, "completed", true);
-      databaseRemove(id);
-    });
-
-    var intervalId;
-    var clockRunning = false;
-
-    // stopwatch object which contains the clock functions
-    var stopwatch = {
-
-      time: 1200,
-
-      //function that starts the countdown clock
-      start: function() {
-        intervalId = setInterval(stopwatch.count, 1000);
-      },
-
-      //function that stops the countdown clock and ends the game
-      stop: function() {
-        clearInterval(intervalId);
-        $("#time-remaining").html("00:00");
-      },
-
-      //function initialized in the start function, counts down in intervals of 1000 ms
-      count: function() {
-        if (stopwatch.time > 0) {
-          stopwatch.time--;
-          var converted = stopwatch.timeConverter(stopwatch.time);
-          $("#time-remaining").text(converted);
-        }
-        else {
-          stopwatch.stop();
-        }
-      },
-
-      //function that converts the time to display it in minutes and seconds
-      timeConverter: function(t) {
-          var minutes = Math.floor(t / 60);
-          var seconds = t - (minutes * 60);
-          if (seconds < 10) {seconds = "0" + seconds;}
-          if (minutes === 0) {minutes = "00";}
-          else if (minutes < 10) {minutes = "0" + minutes;}
-          return minutes + ":" + seconds;}
-      };
-
-    stopwatch.start();
-
-  </script>
+    <script src="../js/statusTimer.js" type="text/javascript"></script>
 
   </body>
 </html>
