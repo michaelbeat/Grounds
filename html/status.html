@@ -30,6 +30,7 @@
         </div>
       </div>
     </nav>
+
     <!-- Sidenav menu -->
     <ul class="sidenav" id="mobile-demo">
       <div class="sidenav-header">
@@ -75,16 +76,21 @@
     <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
 
     <script type="text/javascript">
-    console.log(window.location.href.substring(window.location.href.indexOf("=")+1, window.location.href.length));
-    var obj = new databaseObjRef(window.location.href.substring(window.location.href.indexOf("=")+1, window.location.href.length));
-    $("#business-name").text(obj.name);
+    // Obtain name and id from url
+    var urlName = window.location.href.substring(window.location.href.indexOf("name=")+5, window.location.href.length);
+    var businessName = urlName.split("+").join(" ");
+    var idString = window.location.href.substring(window.location.href.indexOf("=")+1, window.location.href.length);
+    var id = idString.substring(0,13);
+    // Set business name
+    $("#business-name").text(businessName);
+    // Initialize sidebar
     $(document).ready(function(){
       $('.sidenav').sidenav();
     });
 
     $("#complete-button").on("click", function() {
-      databaseSetValue(window.location.href.substring(window.location.href.indexOf("=")+1, window.location.href.length), "completed", true);
-      databaseRemove(window.location.href.substring(window.location.href.indexOf("=")+1, window.location.href.length));
+      databaseSetValue(id, "completed", true);
+      databaseRemove(id);
     });
 
     var intervalId;

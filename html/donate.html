@@ -12,81 +12,79 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
   <!-- Custom Styling -->
   <link rel="stylesheet" type="text/css" href="../css/style.css">
-
   <!-- firebase database -->
   <script src="https://www.gstatic.com/firebasejs/5.5.7/firebase.js"></script>
-
 </head>
 <body>
     <!-- Navbar -->
   <nav>
-      <div class="container">
-        <div class="nav-wrapper">
-          <a href="#!" class="brand-logo">Donate</a>
-          <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-          <ul class="right hide-on-med-and-down">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="donate.html">Donate</a></li>
-            <li><a href="pickup.html">Pick-up</a></li>
-          </ul>
-        </div>
-      </div>
-    </nav>
-    <!-- Sidenav menu -->
-    <ul class="sidenav" id="mobile-demo">
-      <div class="sidenav-header">
-        <h3>Ground</h3>
-      </div>
-      <li><a href="index.html"><i class="material-icons">home</i>Home</a></li>
-      <li><p href="donate.html"></p><i class="material-icons">place</i>Donate</a></li>
-      <li><a href="pickup.html"><i class="material-icons">directions_car</i>Pick-up</a></li>
-      <li><div class="divider"></div></li>
-      <!-- <li><a href="collapsible.html">Settings</a></li> -->
-    </ul>
-
-    <!-- Main content -->
-    <div id="search-show">
-      <div class="container">
-        <div class="row">
-          <p id="text-info-search">What is the name of your business?</p>
-        </div>
-        <div class="row">
-          <nav id="nav-search">
-            <div class="container nav-wrapper">
-              <form> 
-                <div class="input-field">
-                  <input id="search-business" type="search" autocomplete="off" required>
-                  <label class="label-icon" for="search-business">
-                    <i class="material-icons">search</i>
-                  </label>
-                  <i class="material-icons">close</i>
-                </div>
-              </form>
-            </div>
-          </nav>
-        </div>
-        <div id="text-info-search" class="row">
-          <p id="results">Results appear here...</p>
-        </div>
+    <div class="container">
+      <div class="nav-wrapper">
+        <a href="#!" class="brand-logo">Donate</a>
+        <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+        <ul class="right hide-on-med-and-down">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="donate.html">Donate</a></li>
+          <li><a href="pickup.html">Pick-up</a></li>
+        </ul>
       </div>
     </div>
+  </nav>
 
-    <!-- Business Profile -->
-    <div id="profile-show">
-      <div id="img-result"></div>
-      <div class="container">
-          <div class="row">
-              <div class="col s12 m12">
-                  <div class="card darken-1">
-                      <div class="card-content text-info-light">
-                          <span id="results-profile"></span>
-                      </div>
-                  <div class="card-action">
-                  <p class="waves-effect waves-light btn" id="donate-button">Donate!</p>
+  <!-- Sidenav menu -->
+  <ul class="sidenav" id="mobile-demo">
+    <div class="sidenav-header">
+      <h3>Ground</h3>
+    </div>
+    <li><a href="index.html"><i class="material-icons">home</i>Home</a></li>
+    <li><a href="donate.html"><i class="material-icons">place</i>Donate</a></li>
+    <li><a href="pickup.html"><i class="material-icons">directions_car</i>Pick-up</a></li>
+    <li><div class="divider"></div></li>
+  </ul>
+
+  <!-- Main content -->
+  <div id="search-show">
+    <div class="container">
+      <div class="row">
+        <p id="text-info-search">What is the name of your business?</p>
+      </div>
+      <div class="row">
+        <nav id="nav-search">
+          <div class="container nav-wrapper">
+            <form>
+              <div class="input-field">
+                <input id="search-business" type="search" autocomplete="off" required>
+                <label class="label-icon" for="search-business">
+                  <i class="material-icons">search</i>
+                </label>
+                <i class="material-icons">close</i>
               </div>
+            </form>
           </div>
+        </nav>
+      </div>
+      <div id="text-info-search" class="row">
+        <p id="results">Results appear here...</p>
       </div>
     </div>
+  </div>
+
+  <!-- Business Profile -->
+  <div id="profile-show">
+    <div id="img-result"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col s12 m12">
+                <div class="card darken-1">
+                    <div class="card-content text-info-light">
+                        <span id="results-profile"></span>
+                    </div>
+                <div class="card-action">
+                <p class="waves-effect waves-light btn" id="donate-button">Donate!</p>
+            </div>
+        </div>
+    </div>
+  </div>
 
   <!-- jQuery -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -100,25 +98,25 @@
     $(document).ready(function(){
       $('.sidenav').sidenav();
     });
-    
+
     /* This is the current buisiness that we want to add to the database. */
     var currentBiz;
-    
+
     /* This is responsible for showing the relevent divs based on what we pass it. */
     function showElement(x){
       var searchShow = document.getElementById("search-show");
       var profileShow = document.getElementById("profile-show");
-      
+
       searchShow.style.display = "none";
       profileShow.style.display = "none";
-      
+
       if(x == 0){
         profileShow.style.display = "block";
       } else if(x == 1){
         searchShow.style.display = "block";
       }
     }
-    
+
     /* This is what gets triggered when we click on the buisiness we want to add after we search. */
     function clickFunction(newBiz) {
       event.preventDefault();
@@ -127,7 +125,7 @@
       $("#results-profile").html('<p class="text-info-light" id="' + newBiz.name + '" style="margin-top:10px;margin-bottom:10px;"><b>' + newBiz.name + '</b><br>' + newBiz.address + ' ' + newBiz.city + ', ' + newBiz.state + ' ' + newBiz.zipCode + '<br>' + newBiz.phone + '</p></div>');
       $('#img-result').html('<img id="img-profile" src="' + newBiz.imageUrl + '">');
     }
-    
+
     /* Look at this unwieldly monster! Looks like a job for refactory man! This does the yelp ajax call and adds the relevent data from that call. */
     $("form").submit(function( event ) {
       //businesses = [];
@@ -147,12 +145,12 @@
                 if (totalresults > 0){
                     $.each(data.businesses, function(i, item) {
                       var newBiz = new BusinessInfo(item.name, item.location.address1, item.location.city, item.location.state, item.location.zip_code, item.display_phone, item.image_url, item.coordinates.latitude, item.coordinates.longitude);
-                      
+
                       var container = $("<div>");
                       container.on ("click", function(){
                         clickFunction(newBiz);
                       });
-                      
+
                       container.html('<p class="text-results" id="' + newBiz.name + '" style="margin-top:10px;margin-bottom:10px;"><b>' + newBiz.name + '</b><br>' + newBiz.address + ' ' + newBiz.city + ', ' + newBiz.state + ' ' + newBiz.zipCode + '<br>' + newBiz.phone + '</p></div>');
 
                       $("#results").append(container);
@@ -164,7 +162,7 @@
               }
           });
     });
-    
+
     /* This is supposed to interact with the databaseHandler.js, and add a new ref for the request to donate. */
     $("#donate-button").on("click", function() {
       var id = (new Date()).getTime();
@@ -183,7 +181,7 @@
       fireVar.addMe();
       window.location = "pickup.html";
     });
-    
+
     /* This constructor is what we use to easily pass information about a business with. */
     var BusinessInfo = function(){
       this.name = arguments[0] || "N/A";
@@ -197,8 +195,8 @@
       this.long = arguments[8] || "N/A";
     }
 
-    
-    
+
+
     showElement(1);
   </script>
   </body>

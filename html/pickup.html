@@ -69,6 +69,7 @@
               <div class="card-action">
                 <form action="status.html">
                   <input style="display:none;" type="text" name="id" id="refID">
+                  <input style="display:none;" type="text" name="name" id="nameID">
                   <br><br>
                   <input style="width:100%;" class="btn-large" type="submit" value="Claim!">
                 </form>
@@ -82,10 +83,12 @@
   <div id="map"></div>
   </body>
   <script>
+    // Initialize sidebar
     $(document).ready(function(){
       $('.sidenav').sidenav();
     });
 
+    // Function for google maps api
     function initMap() {
       var options = {
         zoom: 10,
@@ -122,7 +125,7 @@
           $("#cardAddress").text(ref.address);
           console.log(ref.id);
           $("#refID").attr("value", ref.id);
-
+          $("#nameID").attr("value", ref.name);
         });
       })
     }
