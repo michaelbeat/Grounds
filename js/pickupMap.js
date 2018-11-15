@@ -14,9 +14,9 @@ function initMap() {
   var map = new google.maps.Map(document.getElementById('map'), options);
   // Creates marker on map for each firebase ref
   allRefs.forEach(function(ref) {
-    if( (new Date()).getTime()-ref.enRoute > 1200000){
+    if(ref.enRoute != -1 && (new Date()).getTime()-ref.enRoute >= 1200000){
       ref.setValue("enRoute", -1);
-    } 
+    }
     if(ref.enRoute == -1 && !ref.completed){
       var marker = new google.maps.Marker({
         position: {
@@ -40,7 +40,6 @@ function initMap() {
         $("#cardTitle").text(ref.name);
         $("#cardPhone").text("Phone:" + ref.phone);
         $("#cardAddress").text(ref.address);
-        console.log(ref.id);
         $("#refID").attr("value", ref.id)
       });
     }

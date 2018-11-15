@@ -71,17 +71,16 @@ $("form").submit(function( event ) {
 $("#donate-button").on("click", function() {
   var id = (new Date()).getTime();
   var fireVar = new databaseObjRef(id);
-  databaseSetValue(id, "name", currentBiz.name);
-  databaseSetValue(id, "address", currentBiz.address);
-  databaseSetValue(id, "city", currentBiz.city);
-  databaseSetValue(id, "state", currentBiz.state);
-  databaseSetValue(id, "zipCode", currentBiz.zipCode);
-  databaseSetValue(id, "phone", currentBiz.phone);
-  databaseSetValue(id, "imageUrl", currentBiz.imageUrl);
-  databaseSetValue(id, "lat", currentBiz.lat);
-  databaseSetValue(id, "long", currentBiz.long);
-  console.log(currentBiz.lat);
-  console.log(currentBiz.long);
+  fireVar.setValue("name", currentBiz.name);
+  fireVar.setValue("address", currentBiz.address);
+  fireVar.setValue("city", currentBiz.city);
+  fireVar.setValue("state", currentBiz.state);
+  fireVar.setValue("zipCode", currentBiz.zipCode);
+  fireVar.setValue("phone", currentBiz.phone);
+  fireVar.setValue("imageUrl", currentBiz.imageUrl);
+  fireVar.setValue("lat", currentBiz.lat);
+  fireVar.setValue("long", currentBiz.long);
+  fireVar.setValue("enRoute", -1);
   fireVar.addMe();
   window.location = "pickup.html";
 });
