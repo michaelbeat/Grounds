@@ -75,12 +75,14 @@
     <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
 
     <script type="text/javascript">
+    console.log(window.location.href.substring(window.location.href.indexOf("=")+1, window.location.href.length));
+    var obj = new databaseObjRef(window.location.href.substring(window.location.href.indexOf("=")+1, window.location.href.length));
+    $("#business-name").text(obj.name);
     $(document).ready(function(){
       $('.sidenav').sidenav();
     });
 
     $("#complete-button").on("click", function() {
-      console.log(window.location.href.substring(window.location.href.indexOf("=")+1, window.location.href.length));
       databaseSetValue(window.location.href.substring(window.location.href.indexOf("=")+1, window.location.href.length), "completed", true);
       databaseRemove(window.location.href.substring(window.location.href.indexOf("=")+1, window.location.href.length));
     });
