@@ -37,7 +37,8 @@ function initMap() {
         $("#cardTitle").text(ref.name);
         $("#cardPhone").text("Phone:" + ref.phone);
         $("#cardAddress").text(ref.address);
-        $("#refID").attr("value", ref.id)
+        $("#refID").attr("value", ref.id);
+        $("#nameID").attr("value", ref.name);
       });
     }
   });
