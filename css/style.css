@@ -91,11 +91,11 @@ body {
   color: black;
 }
 
-.business-container #claim-button {
+.business-container #refID {
   width: 100%;
 }
 
-.card-action #claim-button {
+.card-action #refID {
   width: 100%;
 }
 
@@ -149,10 +149,11 @@ body {
 
 #img-style {
   display: block;
-  margin: 0px auto 0px auto;
+  object-fit: cover;
+  margin: auto;
   max-width: 600px;
   width: 100%;
-  padding: 0;
+  height: 250px;
   box-shadow: 0px 2px 2px grey;
 }
 

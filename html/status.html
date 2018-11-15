@@ -12,7 +12,8 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
   <!-- Custom Styling -->
   <link rel="stylesheet" type="text/css" href="../css/style.css">
-
+  <script src="https://www.gstatic.com/firebasejs/5.5.7/firebase.js"></script>
+  <script src="../js/databaseHandler.js"></script>
 </head>
 <body>
   <!-- Navbar -->
@@ -62,7 +63,7 @@
       </div>
     </div>
     <div class="row" id="status-buttons">
-      <a href="index.html" id="cancel-button" class="waves-effect waves-light btn-large">Cancel</a>
+      <p id="cancel-button" class="waves-effect waves-light btn-large">Cancel</p>
       <a href="index.html" id="complete-button" class="waves-effect waves-light btn-large">Complete</a>
     </div>
 
@@ -73,55 +74,7 @@
     <!-- Firebase Reference -->
     <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
 
-    <script type="text/javascript">
-    $(document).ready(function(){
-      $('.sidenav').sidenav();
-    });
-
-    var intervalId;
-    var clockRunning = false;
-
-    // stopwatch object which contains the clock functions
-    var stopwatch = {
-
-      time: 1200,
-
-      //function that starts the countdown clock
-      start: function() {
-        intervalId = setInterval(stopwatch.count, 1000);
-      },
-
-      //function that stops the countdown clock and ends the game
-      stop: function() {
-        clearInterval(intervalId);
-        $("#time-remaining").html("00:00");
-      },
-
-      //function initialized in the start function, counts down in intervals of 1000 ms
-      count: function() {
-        if (stopwatch.time > 0) { 
-          stopwatch.time--;
-          var converted = stopwatch.timeConverter(stopwatch.time);
-          $("#time-remaining").text(converted);
-        }
-        else {
-          stopwatch.stop();
-        }
-      },
-
-      //function that converts the time to display it in minutes and seconds
-      timeConverter: function(t) {
-          var minutes = Math.floor(t / 60);
-          var seconds = t - (minutes * 60);
-          if (seconds < 10) {seconds = "0" + seconds;}
-          if (minutes === 0) {minutes = "00";}
-          else if (minutes < 10) {minutes = "0" + minutes;}
-          return minutes + ":" + seconds;}
-      };     
-    
-    stopwatch.start();
-
-  </script>
+    <script src="../js/statusTimer.js" type="text/javascript"></script>
 
   </body>
 </html>

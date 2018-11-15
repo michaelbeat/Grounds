@@ -1,4 +1,4 @@
-/* 
+/*
   This is the js file responsible for doing stuff with the firebase database.
   This file will have getters and setters for the database.
   The naming scheme for the database is simple.
@@ -41,17 +41,20 @@ function databaseGetAll(){
 			var newObj = new databaseObjRef(keys.id);
 			allRefs.push(newObj);
 		});
+		if(window.location.href.includes("pickup.html")){
+			initMap();
+		}
 	});
 }
 
-/* 
+/*
   This retrieves a requested value from a ref, via the refPath and returns it.
 */
 function databaseGet(refPath){
 	var tref = database.ref(refPath);
-	
+
 	var result = new databaseObjRef();
-	
+
 	tref.once('value').then(function(snapshot) {
 		if(snapshot.exists()){
 			result.id = refPath;
@@ -66,14 +69,14 @@ function databaseGet(refPath){
 	return result;
 }
 
-/* 
-  This function gets a requested value from the refPath. 
+/*
+  This function gets a requested value from the refPath.
 */
 function databaseGetValue(refPath, valName){
 	var tref = database.ref(refPath);
-	
+
 	var result = new databaseObjRef();
-	
+
 	tref.once('value').then(function(snapshot) {
 		if(snapshot.exists()){
 			result.id = refPath;
@@ -90,7 +93,7 @@ function databaseGetValue(refPath, valName){
 	}
 }
 
-/* 
+/*
   This sets the value of a ref to a new databaseObjRef, or creates a new ref with the databaseObjRef passed.
 */
 function databaseSet(refPath, databaseObject){
@@ -104,21 +107,21 @@ function databaseSet(refPath, databaseObject){
 	});
 }
 
-/* 
-  This is used to set a specific value of a ref, using the refPath, the name of the value you would like to change, and the value you want to change it to. 
+/*
+  This is used to set a specific value of a ref, using the refPath, the name of the value you would like to change, and the value you want to change it to.
 */
 function databaseSetValue(refPath, valueName, newValue){
 	var tref = database.ref(refPath+"/"+valueName).set(newValue);
 }
 
 /*
-  This removes an entire ref from the database using the refPath. 
+  This removes an entire ref from the database using the refPath.
 */
 function databaseRemove(refPath){
 	var tref = database.ref(refPath);
-	
+
 	var result = new databaseObjRef();
-	
+
 	tref.once('value').then(function(snapshot) {
 		if(snapshot.exists()){
 			if(!snapshot.hasChild("completed")){
@@ -153,7 +156,7 @@ var databaseObjRef = function(){
   this.lat = arguments[9] || 0;
   this.long = arguments[10] || 0;
   this.imageUrl = arguments[11] || "Not defined!";
-	
+
 	/* If you want to use the data directly in the html doc, get the values from this function, that way we don't get any xss attacks. */
 	this.sanitized = function(){
 		return [
@@ -173,18 +176,18 @@ var databaseObjRef = function(){
 			this.enRoute.replace(">", "&gt;")
 		];
 	}
-	
+
 	/* This adds this obj to the database. */
 	this.addMe = function(){
 		databaseSet(this.id, this);
 	}
-	
+
 	/* Makes this object take its own life. */
 	this.killMe = function(){
 		this.setValue("completed", true);
 		databaseRemove(this.id);
 	}
-	
+
 	/* This sets the value of the object. */
 	this.setValue = function(valueName, newValue){
 		if(valueName != "id"){
@@ -193,22 +196,31 @@ var databaseObjRef = function(){
 			databaseSetValue(this.id, valueName, newValue);
 		}
 	}
-	
+
 	/* This updates the object with the database values. */
 	this.update = function(snapshot){
 		this.name = (snapshot.hasChild("name")) ? snapshot.val().name : "Not defined!";
 		this.location = (snapshot.hasChild("location")) ? snapshot.val().location : "Not defined!";
 		this.pickupType = (snapshot.hasChild("pickupType")) ? snapshot.val().pickupType : "Not defined!";
 		this.id = (snapshot.hasChild("pickupType")) ? snapshot.val().id : this.id;
-		this.completed = (snapshot.hasChild("completed")) ? snapshot.val().completed : "Not defined!";
+		this.completed = (snapshot.hasChild("completed")) ? snapshot.val().completed : false;
+    this.address = (snapshot.hasChild("address")) ? snapshot.val().address : "Not defined!";
+    this.zipCode = (snapshot.hasChild("zipCode")) ? snapshot.val().zipCode : "Not defined!";
+    this.state = (snapshot.hasChild("state")) ? snapshot.val().state : "Not defined!";
+    this.long = (snapshot.hasChild("long")) ? snapshot.val().long : 0;
+    this.lat = (snapshot.hasChild("lat")) ? snapshot.val().lat : 0;
+    this.imageUrl = (snapshot.hasChild("imageUrl")) ? snapshot.val().imageUrl : "Not defined!";
+    this.phone = (snapshot.hasChild("phone")) ? snapshot.val().phone : "Not defined!";
+    this.enRoute = (snapshot.hasChild("enRoute")) ? snapshot.val().enRoute : -1;
 	}
-	
+
 	/* Have to create other, because inside of the anon function this is bound to somthing else! */
 	var other = this;
 	database.ref(this.id).on("value", function(snapshot){
 		other.update(snapshot);
+    console.log(this.id + " updated databaseObjRef!");
 	});
-	
+
 }
 
 /* Important. This sets up the database for use in the program. */
