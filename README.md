@@ -1,4 +1,6 @@
-### https://michaelbeat.github.io/Project_1/
+# Grounds
+
+Mobile responsive web application built to provide a platform that connects local businesses & restaurants looking to get rid of their coffee grounds and people looking to recycle and fertalize those grounds. This project can be viewed [here](https://michaelbeat.github.io/Project_1/).
 
 ## Team Members
 Brian Duong - Project Manager/Frontend  
@@ -7,18 +9,14 @@ Clayton Bondy - Frontend
 Christopher Quionnes - Backend  
 Michael Beat - GitHub Manager/Backend  
 
-## Project Description
-Our goal for this application is to provide a platform that connects local businesses & restaurants looking to get rid of their coffee grounds and people looking to recycle and fertalize those grounds.
-
 ## APIs
-* Google Maps
-* OpenWeatherMap
+* [Google Maps](https://developers.google.com/maps/documentation/) - Used to display map
+* [Yelp](https://www.yelp.com/fusion) - Restaurant information
 
 ## Libraries
-* Moment.js
-* jQuery
-* Materialize
-* Firebase
+* [jQuery](https://jquery.com/) - JavaScript library used for DOM manipulation
+* [Materialize](https://materializecss.com/) - Front-end framework
+* [Firebase](https://firebase.google.com/) - Database storage
 
 ## Tasks Breakdown
 * Set up Github repo & Trello for project management
