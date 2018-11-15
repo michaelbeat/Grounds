@@ -1,5 +1,5 @@
-/* 
-  For fucks sake! Fuck this file. 
+/*
+  For fucks sake! Fuck this file.
   This handles the timer and the sidenav for the file status.html.
 */
 
@@ -7,6 +7,12 @@
 $(document).ready(function(){
   $('.sidenav').sidenav();
 });
+
+// Updates business name of claimed page
+var urlName = window.location.href.substring(window.location.href.indexOf("name=")+5, window.location.href.length);
+var businessName = urlName.split("+").join(" ");
+$("#business-name").text(businessName);
+console.log(businessName);
 
 /* This is a nice way to get all the things we passed in the previous form. */
 var messyProps = window.location.href.split("?")[1].split("&");
@@ -17,6 +23,7 @@ for(let i = 0; i < messyProps.length; i++){
 }
 /* This is the id of the databaseObjRef we are going to use in this file. */
 var currentId = props.id;
+console.log("hello" + currentId);
 /* This is the object that we are manipulating for the timer. */
 var currentObj = new databaseObjRef(currentId);
 
@@ -25,6 +32,7 @@ var ref = database.ref(currentId);
 ref.once('value', function(snapshot) {
   doThing(snapshot);
 });
+
 /* This works with the code above to set enRoute for the currentObj. */
 function doThing(snapshot){
   if(snapshot.val().enRoute == -1){
