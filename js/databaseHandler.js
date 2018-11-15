@@ -202,7 +202,6 @@ var databaseObjRef = function(){
 		this.name = (snapshot.hasChild("name")) ? snapshot.val().name : "Not defined!";
 		this.location = (snapshot.hasChild("location")) ? snapshot.val().location : "Not defined!";
 		this.pickupType = (snapshot.hasChild("pickupType")) ? snapshot.val().pickupType : "Not defined!";
-		this.id = (snapshot.hasChild("pickupType")) ? snapshot.val().id : this.id;
 		this.completed = (snapshot.hasChild("completed")) ? snapshot.val().completed : false;
     this.address = (snapshot.hasChild("address")) ? snapshot.val().address : "Not defined!";
     this.zipCode = (snapshot.hasChild("zipCode")) ? snapshot.val().zipCode : "Not defined!";
